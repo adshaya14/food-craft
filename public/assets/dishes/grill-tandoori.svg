@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shadowTan" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowTan)">
+    <!-- Cast Iron Sizzler Plate -->
+    <ellipse cx="100" cy="165" rx="78" ry="20" fill="#2d3748"/>
+    <ellipse cx="100" cy="162" rx="72" ry="17" fill="#1a202c"/>
+    <!-- Wooden Under-board -->
+    <ellipse cx="100" cy="172" rx="84" ry="18" fill="#7b341e"/>
+    <!-- Sizzling Cabbage / Onion Bed -->
+    <path d="M40,158 Q100,148 160,158" stroke="#feebc8" stroke-width="8" stroke-linecap="round"/>
+    <!-- Big Tandoori Leg Quarter -->
+    <g transform="translate(10, 0)">
+      <!-- Bone End -->
+      <path d="M145,65 Q160,55 168,60 Q174,66 166,74 Q154,76 142,72 Z" fill="#fffaf0"/>
+      <!-- Foil wrap on bone -->
+      <rect x="135" y="64" width="14" height="12" rx="3" transform="rotate(18 135 64)" fill="#cbd5e0"/>
+      <!-- Drumstick & Thigh Meat -->
+      <path d="M45,130 C30,95 65,75 105,75 C135,75 145,95 140,115 C135,135 110,150 75,148 C55,146 45,140 45,130 Z" fill="#9b2c2c"/>
+      <path d="M48,128 C35,98 68,78 105,78 C132,78 142,96 138,114 C132,132 108,146 76,144 C58,142 48,136 48,128 Z" fill="#c53030"/>
+      <!-- Searing / Tandoor Cuts (Diagonal Slits) -->
+      <path d="M68,95 L84,115" stroke="#4a1515" stroke-width="4" stroke-linecap="round"/>
+      <path d="M88,90 L106,114" stroke="#4a1515" stroke-width="4" stroke-linecap="round"/>
+      <path d="M108,88 L124,110" stroke="#4a1515" stroke-width="4" stroke-linecap="round"/>
+      <!-- Char Marks -->
+      <ellipse cx="78" cy="106" rx="4" ry="2" fill="#1a202c" opacity="0.8"/>
+      <ellipse cx="98" cy="102" rx="5" ry="2" fill="#1a202c" opacity="0.8"/>
+      <ellipse cx="118" cy="98" rx="4" ry="2" fill="#1a202c" opacity="0.8"/>
+    </g>
+    <!-- Lemon Wedge -->
+    <path d="M42,130 A18,18 0 0,1 62,148 L42,148 Z" fill="#ecc94b"/>
+    <path d="M45,134 A14,14 0 0,1 60,146 L45,146 Z" fill="#faf089"/>
+    <!-- Mint Chutney Swirl -->
+    <circle cx="150" cy="140" r="12" fill="#276749"/>
+    <circle cx="150" cy="140" r="9" fill="#38a169"/>
+    <!-- Fresh Mint Sprig -->
+    <path d="M85,70 Q75,60 88,60 Q95,65 85,70 Z" fill="#48bb78"/>
+  </g>
+</svg>

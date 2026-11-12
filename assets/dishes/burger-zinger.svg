@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shadowZ" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowZ)">
+    <ellipse cx="100" cy="180" rx="72" ry="12" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Bottom Bun -->
+    <path d="M45,152 Q100,166 155,152 Q158,168 145,172 Q100,178 55,172 Q42,168 45,152 Z" fill="#dd6b20"/>
+    <!-- Mayo / Sauce Drizzle -->
+    <path d="M50,152 Q70,157 100,152 Q130,157 150,152" stroke="#fff5ea" stroke-width="6" stroke-linecap="round"/>
+    <!-- Big Crunchy Fried Chicken Fillet -->
+    <path d="M35,130 Q42,118 58,124 Q72,114 90,122 Q110,112 130,120 Q148,114 162,126 Q170,138 160,146 Q145,152 130,147 Q112,154 94,148 Q74,155 54,147 Q36,145 35,130 Z" fill="#b7791f"/>
+    <!-- Crispy Crumb Texture -->
+    <path d="M40,128 Q48,120 62,126 Q75,116 94,124 Q114,115 134,122 Q150,118 158,128 Q164,136 155,142 Q140,147 126,143 Q108,150 90,144 Q70,150 50,143 Q38,140 40,128 Z" fill="#d69e2e"/>
+    <circle cx="58" cy="132" r="3" fill="#975a16"/>
+    <circle cx="82" cy="136" r="3.5" fill="#975a16"/>
+    <circle cx="112" cy="130" r="4" fill="#975a16"/>
+    <circle cx="138" cy="135" r="3" fill="#975a16"/>
+    <circle cx="150" cy="128" r="2.5" fill="#975a16"/>
+    <!-- Spicy Peri Dust -->
+    <circle cx="70" cy="126" r="1.5" fill="#c53030"/>
+    <circle cx="98" cy="128" r="2" fill="#c53030"/>
+    <circle cx="125" cy="125" r="1.5" fill="#c53030"/>
+    <!-- Pickled Gherkins -->
+    <rect x="52" y="112" width="28" height="8" rx="4" transform="rotate(-6 52 112)" fill="#2f855a"/>
+    <rect x="118" y="114" width="30" height="8" rx="4" transform="rotate(8 118 114)" fill="#2f855a"/>
+    <!-- Shredded Creamy Coleslaw -->
+    <path d="M40,105 Q100,98 160,105 Q155,116 100,114 Q45,116 40,105 Z" fill="#feebc8"/>
+    <path d="M44,106 Q55,100 66,106 Q78,99 90,105 Q104,100 116,106 Q130,99 142,106 Q154,102 156,109 Q100,112 44,106 Z" fill="#68d391"/>
+    <!-- Top Bun -->
+    <path d="M40,96 C40,40 160,40 160,96 C160,99 40,99 40,96 Z" fill="#dd6b20"/>
+    <path d="M43,94 C43,44 157,44 157,94 Z" fill="#ed8936"/>
+    <!-- Sesame Seeds -->
+    <ellipse cx="80" cy="60" rx="3" ry="1.5" transform="rotate(-15 80 60)" fill="#fffaf0"/>
+    <ellipse cx="102" cy="54" rx="3" ry="1.5" transform="rotate(5 102 54)" fill="#fffaf0"/>
+    <ellipse cx="122" cy="62" rx="3" ry="1.5" transform="rotate(25 122 62)" fill="#fffaf0"/>
+    <ellipse cx="92" cy="72" rx="3" ry="1.5" transform="rotate(-5 92 72)" fill="#fffaf0"/>
+    <ellipse cx="114" cy="74" rx="3" ry="1.5" transform="rotate(15 114 74)" fill="#fffaf0"/>
+  </g>
+</svg>

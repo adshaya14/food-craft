@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="kSh" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="teaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="50%" stop-color="#92400e"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#kSh)">
+    <ellipse cx="100" cy="180" rx="55" ry="12" fill="#2d3748" opacity="0.4"/>
+    <!-- Terracotta Saucer -->
+    <ellipse cx="100" cy="170" rx="65" ry="14" fill="#9a3412"/>
+    <ellipse cx="100" cy="168" rx="60" ry="11" fill="#c2410c"/>
+    <!-- Traditional Chai Glass / Kulhad Cup -->
+    <path d="M68,75 L75,160 Q100,166 125,160 L132,75 Z" fill="#9a3412"/>
+    <path d="M70,78 L76,158 Q100,164 124,158 L130,78 Z" fill="#c2410c"/>
+    <!-- Ribbed Glass / Terracotta Bands -->
+    <ellipse cx="100" cy="95" rx="30" ry="6" fill="none" stroke="#7c2d12" stroke-width="2"/>
+    <ellipse cx="100" cy="115" rx="28" ry="5.5" fill="none" stroke="#7c2d12" stroke-width="2"/>
+    <ellipse cx="100" cy="135" rx="26" ry="5" fill="none" stroke="#7c2d12" stroke-width="2"/>
+    <!-- Hot Cardamom Tea Liquid Level -->
+    <ellipse cx="100" cy="80" rx="31" ry="8" fill="url(#teaGrad)"/>
+    <!-- Frothy Milk Foam Top with Saffron Strands -->
+    <ellipse cx="100" cy="79" rx="29" ry="7" fill="#fed7aa" opacity="0.9"/>
+    <!-- Saffron Strands on top -->
+    <path d="M92,78 Q96,75 100,79" stroke="#b91c1c" stroke-width="1.5" fill="none"/>
+    <path d="M102,77 Q106,80 110,77" stroke="#b91c1c" stroke-width="1.5" fill="none"/>
+    <circle cx="95" cy="81" r="1" fill="#78350f"/>
+    <circle cx="105" cy="80" r="1" fill="#78350f"/>
+    <!-- Cardamom pod peeking -->
+    <ellipse cx="101" cy="79" rx="3.5" ry="2" fill="#15803d"/>
+    <!-- Steaming Hot Wisps -->
+    <path d="M85,55 Q78,40 86,28" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <path d="M100,50 Q108,35 98,22" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7"/>
+    <path d="M115,55 Q122,40 114,28" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+  </g>
+</svg>

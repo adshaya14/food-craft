@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shadowHum" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowHum)">
+    <ellipse cx="100" cy="165" rx="76" ry="16" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Ceramic Terracotta Plate -->
+    <circle cx="100" cy="115" r="68" fill="#dd6b20"/>
+    <circle cx="100" cy="115" r="64" fill="#feebc8"/>
+    <!-- Swirled Silk Hummus -->
+    <circle cx="100" cy="115" r="54" fill="#faf089"/>
+    <!-- Spoon Swirl Well -->
+    <path d="M72,115 A28,28 0 1,1 128,115 A28,28 0 1,1 72,115" stroke="#ecc94b" stroke-width="12" fill="none"/>
+    <!-- Extra Virgin Olive Oil Pool -->
+    <path d="M78,115 A22,22 0 1,1 122,115 A22,22 0 1,1 78,115" stroke="#d69e2e" stroke-width="6" fill="none" opacity="0.85"/>
+    <!-- Whole Cooked Chickpeas in center -->
+    <circle cx="95" cy="112" r="4.5" fill="#ecc94b" stroke="#b7791f" stroke-width="1"/>
+    <circle cx="106" cy="114" r="4" fill="#ecc94b" stroke="#b7791f" stroke-width="1"/>
+    <circle cx="100" cy="122" r="4.5" fill="#ecc94b" stroke="#b7791f" stroke-width="1"/>
+    <!-- Paprika Dust line -->
+    <path d="M65,115 L135,115" stroke="#c53030" stroke-width="3" stroke-dasharray="2,3" stroke-linecap="round"/>
+    <!-- Fresh Parsley leaf in middle -->
+    <path d="M100,105 Q94,95 104,95 Q106,100 100,105 Z" fill="#2f855a"/>
+    <!-- Warm Pita Wedges (Tucked behind / top) -->
+    <polygon points="50,75 80,45 88,85" fill="#feebc8" stroke="#dd6b20" stroke-width="2"/>
+    <ellipse cx="68" cy="65" rx="3" ry="1.5" fill="#c05621"/>
+    <polygon points="85,80 120,40 130,80" fill="#fffaf0" stroke="#dd6b20" stroke-width="2"/>
+    <ellipse cx="108" cy="60" rx="3" ry="1.5" fill="#c05621"/>
+  </g>
+</svg>

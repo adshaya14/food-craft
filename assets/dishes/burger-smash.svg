@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+    <linearGradient id="bunGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6ad55"/>
+      <stop offset="100%" stop-color="#dd6b20"/>
+    </linearGradient>
+    <linearGradient id="pattyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a2511"/>
+      <stop offset="100%" stop-color="#2d1508"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#shadow)">
+    <!-- Plate / Shadow -->
+    <ellipse cx="100" cy="180" rx="75" ry="12" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Bottom Bun -->
+    <path d="M45,152 Q100,166 155,152 Q158,168 145,172 Q100,178 55,172 Q42,168 45,152 Z" fill="#dd6b20"/>
+    <path d="M48,154 Q100,165 152,154 Q154,166 142,169 Q100,175 58,169 Q46,166 48,154 Z" fill="#ed8936"/>
+    <!-- Bottom Sauce & Pickles -->
+    <path d="M52,150 Q75,158 100,152 Q125,158 148,150 Q152,154 140,156 Q100,162 60,156 Z" fill="#fff5ea"/>
+    <!-- Lower Patty -->
+    <rect x="42" y="136" width="116" height="15" rx="7" fill="url(#pattyGrad)"/>
+    <!-- Cheese Melt 1 -->
+    <path d="M40,135 Q70,132 100,135 Q130,132 160,135 L156,144 Q148,156 140,146 L124,147 Q118,158 112,148 L92,149 Q84,162 76,148 L58,149 Q48,156 44,143 Z" fill="#ecc94b"/>
+    <!-- Middle Patty -->
+    <rect x="40" y="118" width="120" height="16" rx="8" fill="url(#pattyGrad)"/>
+    <!-- Cheese Melt 2 -->
+    <path d="M38,118 Q75,114 100,118 Q135,114 162,118 L158,127 Q150,138 142,128 L126,130 Q120,142 110,130 L88,131 Q80,144 72,130 L52,131 Q44,139 40,126 Z" fill="#f6ad55"/>
+    <!-- Crisp Lettuce ruffle -->
+    <path d="M34,108 Q45,102 56,108 Q68,100 80,108 Q94,101 106,108 Q120,101 132,108 Q144,102 154,108 Q164,103 166,112 Q150,118 100,118 Q50,118 34,112 Z" fill="#38a169"/>
+    <path d="M36,110 Q48,105 60,110 Q72,104 84,110 Q98,104 110,110 Q124,104 136,110 Q148,105 160,110 Q148,115 100,116 Q52,115 36,110 Z" fill="#48bb78"/>
+    <!-- Ripe Tomato Slices -->
+    <rect x="44" y="98" width="54" height="10" rx="5" fill="#e53e3e"/>
+    <rect x="102" y="98" width="54" height="10" rx="5" fill="#e53e3e"/>
+    <!-- Red Onion Rings -->
+    <path d="M50,96 Q100,92 150,96" stroke="#9b2c2c" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M60,94 Q100,90 140,94" stroke="#fed7d7" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <!-- Top Brioche Bun -->
+    <path d="M40,96 C40,42 160,42 160,96 C160,99 40,99 40,96 Z" fill="url(#bunGrad)"/>
+    <!-- Bun Gloss Highlight -->
+    <path d="M60,65 C75,52 125,52 140,65 C125,58 75,58 60,65 Z" fill="#feebc8" opacity="0.6"/>
+    <!-- Sesame Seeds -->
+    <ellipse cx="75" cy="62" rx="3" ry="1.5" transform="rotate(-15 75 62)" fill="#fffff0"/>
+    <ellipse cx="95" cy="55" rx="3" ry="1.5" transform="rotate(5 95 55)" fill="#fffff0"/>
+    <ellipse cx="118" cy="58" rx="3" ry="1.5" transform="rotate(20 118 58)" fill="#fffff0"/>
+    <ellipse cx="82" cy="74" rx="3" ry="1.5" transform="rotate(-8 82 74)" fill="#fffff0"/>
+    <ellipse cx="106" cy="70" rx="3" ry="1.5" transform="rotate(12 106 70)" fill="#fffff0"/>
+    <ellipse cx="132" cy="73" rx="3" ry="1.5" transform="rotate(25 132 73)" fill="#fffff0"/>
+    <ellipse cx="60" cy="80" rx="3" ry="1.5" transform="rotate(-25 60 80)" fill="#fffff0"/>
+    <ellipse cx="145" cy="82" rx="3" ry="1.5" transform="rotate(30 145 82)" fill="#fffff0"/>
+  </g>
+</svg>

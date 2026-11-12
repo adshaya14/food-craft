@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="bbqBSh" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <g filter="url(#bbqBSh)">
+    <ellipse cx="100" cy="180" rx="74" ry="12" fill="#2d3748" opacity="0.4"/>
+    <!-- Bottom Bun -->
+    <path d="M45,152 Q100,166 155,152 Q158,168 145,172 Q100,178 55,172 Q42,168 45,152 Z" fill="#dd6b20"/>
+    <!-- Smashed Beef Patty -->
+    <rect x="40" y="136" width="120" height="15" rx="7" fill="#381c0d"/>
+    <!-- Sharp Melted Cheddar Cheese -->
+    <path d="M38,135 Q70,131 100,135 Q130,131 162,135 L158,145 Q148,158 140,147 L124,148 Q118,160 110,149 L88,150 Q80,163 72,149 L52,150 Q44,158 40,144 Z" fill="#f59e0b"/>
+    <!-- Smoky BBQ Sauce Drizzle Dripping -->
+    <path d="M45,128 Q100,120 155,128 L150,136 Q135,142 120,135 Q105,144 90,135 Q75,142 60,136 Z" fill="#451a03"/>
+    <!-- Crispy Golden Onion Ring Tanglers on Top -->
+    <ellipse cx="80" cy="116" rx="22" ry="10" fill="none" stroke="#d97706" stroke-width="5"/>
+    <ellipse cx="120" cy="118" rx="20" ry="9" fill="none" stroke="#d97706" stroke-width="5"/>
+    <ellipse cx="100" cy="112" rx="24" ry="10" fill="none" stroke="#f59e0b" stroke-width="4"/>
+    <!-- Crispy Bacon Strips -->
+    <path d="M48,124 Q75,118 100,122 Q125,118 152,124" stroke="#7f1d1d" stroke-width="5" stroke-linecap="round"/>
+    <!-- Top Brioche Bun -->
+    <path d="M40,102 C40,46 160,46 160,102 C160,105 40,105 40,102 Z" fill="#ea580c"/>
+    <path d="M42,100 C42,48 158,48 158,100 Z" fill="#f97316"/>
+    <!-- Sesame Seeds -->
+    <ellipse cx="80" cy="68" rx="3" ry="1.5" transform="rotate(-15 80 68)" fill="#fffaf0"/>
+    <ellipse cx="102" cy="62" rx="3" ry="1.5" transform="rotate(5 102 62)" fill="#fffaf0"/>
+    <ellipse cx="122" cy="70" rx="3" ry="1.5" transform="rotate(25 122 70)" fill="#fffaf0"/>
+    <ellipse cx="92" cy="80" rx="3" ry="1.5" transform="rotate(-5 92 80)" fill="#fffaf0"/>
+    <ellipse cx="114" cy="82" rx="3" ry="1.5" transform="rotate(15 114 82)" fill="#fffaf0"/>
+  </g>
+</svg>

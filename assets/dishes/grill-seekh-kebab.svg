@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shSk" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shSk)">
+    <ellipse cx="100" cy="165" rx="75" ry="18" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Wooden Platter -->
+    <ellipse cx="100" cy="155" rx="80" ry="24" fill="#7b341e"/>
+    <ellipse cx="100" cy="152" rx="76" ry="20" fill="#9c4221"/>
+    <!-- Seekh Kebab 1 (Spiced Minced Charcoal Kebab) -->
+    <g transform="rotate(-15 100 110)">
+      <line x1="20" y1="110" x2="180" y2="110" stroke="#a0aec0" stroke-width="3" stroke-linecap="round"/>
+      <rect x="45" y="98" width="110" height="24" rx="12" fill="#4a1515"/>
+      <rect x="48" y="100" width="104" height="20" rx="10" fill="#742a2a"/>
+      <!-- Finger impressions / Kebab ribs -->
+      <ellipse cx="65" cy="110" rx="3" ry="8" fill="#2d1508"/>
+      <ellipse cx="85" cy="110" rx="3" ry="8" fill="#2d1508"/>
+      <ellipse cx="105" cy="110" rx="3" ry="8" fill="#2d1508"/>
+      <ellipse cx="125" cy="110" rx="3" ry="8" fill="#2d1508"/>
+      <ellipse cx="140" cy="110" rx="3" ry="8" fill="#2d1508"/>
+    </g>
+    <!-- Seekh Kebab 2 -->
+    <g transform="rotate(10 100 135)">
+      <line x1="20" y1="135" x2="180" y2="135" stroke="#a0aec0" stroke-width="3" stroke-linecap="round"/>
+      <rect x="45" y="123" width="110" height="24" rx="12" fill="#4a1515"/>
+      <rect x="48" y="125" width="104" height="20" rx="10" fill="#742a2a"/>
+      <ellipse cx="65" cy="135" rx="3" ry="8" fill="#2d1508"/>
+      <ellipse cx="85" cy="135" rx="3" ry="8" fill="#2d1508"/>
+      <ellipse cx="105" cy="135" rx="3" ry="8" fill="#2d1508"/>
+      <ellipse cx="125" cy="135" rx="3" ry="8" fill="#2d1508"/>
+      <ellipse cx="140" cy="135" rx="3" ry="8" fill="#2d1508"/>
+    </g>
+    <!-- Fresh Mint & Onion Rings Garnish -->
+    <circle cx="160" cy="140" r="10" stroke="#fffaf0" stroke-width="3" fill="none"/>
+    <circle cx="155" cy="145" r="8" stroke="#9b2c2c" stroke-width="2" fill="none"/>
+    <circle cx="45" cy="145" r="3" fill="#48bb78"/>
+    <circle cx="55" cy="142" r="4" fill="#38a169"/>
+  </g>
+</svg>

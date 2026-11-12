@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="gSh" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <g filter="url(#gSh)">
+    <!-- Wooden Underboard -->
+    <ellipse cx="100" cy="100" rx="88" ry="78" fill="#5c2c16"/>
+    <!-- Cast Iron Heavy Sizzler -->
+    <ellipse cx="100" cy="98" rx="80" ry="70" fill="#1a202c"/>
+    <ellipse cx="100" cy="97" rx="74" ry="64" fill="#2d3748"/>
+    <!-- Sizzling bed of onions & charred cabbage -->
+    <ellipse cx="100" cy="97" rx="64" ry="54" fill="#4a5568"/>
+    <path d="M50,95 Q100,85 150,95" stroke="#ecc94b" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+    <path d="M60,110 Q100,100 140,110" stroke="#ecc94b" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+    <path d="M70,80 Q100,72 130,80" stroke="#f6ad55" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+    <!-- Char spots -->
+    <circle cx="85" cy="92" r="3" fill="#1a202c"/>
+    <circle cx="115" cy="102" r="3.5" fill="#1a202c"/>
+  </g>
+</svg>

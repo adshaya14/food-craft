@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="bwSh" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <g filter="url(#bwSh)">
+    <!-- Dark Ceramic Bowl Rim -->
+    <circle cx="100" cy="100" r="85" fill="#111827"/>
+    <circle cx="100" cy="100" r="82" fill="#1f2937"/>
+    <circle cx="100" cy="100" r="76" fill="#374151"/>
+    <!-- Steaming Saffron Infused Turmeric Basmati Rice Base -->
+    <circle cx="100" cy="100" r="70" fill="#fef08a"/>
+    <circle cx="100" cy="100" r="66" fill="#fef9c3"/>
+    <!-- Rice grain streaks -->
+    <ellipse cx="85" cy="80" rx="8" ry="4" transform="rotate(-15 85 80)" fill="#fde047"/>
+    <ellipse cx="115" cy="85" rx="8" ry="4" transform="rotate(25 115 85)" fill="#fde047"/>
+    <ellipse cx="90" cy="115" rx="8" ry="4" transform="rotate(45 90 115)" fill="#fde047"/>
+    <ellipse cx="120" cy="110" rx="8" ry="4" transform="rotate(-30 120 110)" fill="#fde047"/>
+  </g>
+</svg>

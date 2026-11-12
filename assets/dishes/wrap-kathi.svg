@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shW2" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shW2)">
+    <ellipse cx="100" cy="175" rx="60" ry="12" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Silver Foil Wrap Lower Half -->
+    <path d="M72,110 L78,160 Q100,168 122,160 L128,110 Z" fill="#cbd5e0"/>
+    <path d="M74,112 L79,158 Q100,165 120,158 L126,112 Z" fill="#e2e8f0"/>
+    <!-- Paratha Roll Peaking Out -->
+    <path d="M70,55 L75,115 Q100,122 125,115 L130,55 Z" fill="#d69e2e"/>
+    <path d="M72,58 L76,113 Q100,119 123,113 L127,58 Z" fill="#f6ad55"/>
+    <!-- Flaky Paratha Ghee Spots -->
+    <ellipse cx="88" cy="85" rx="6" ry="3" fill="#c05621"/>
+    <ellipse cx="112" cy="95" rx="7" ry="3.5" fill="#c05621"/>
+    <!-- Filling Bursting from Top -->
+    <ellipse cx="100" cy="55" rx="28" ry="12" fill="#feebc8"/>
+    <!-- Paneer Tikka / Chicken Chunks -->
+    <rect x="85" y="44" width="14" height="12" rx="3" fill="#c53030"/>
+    <rect x="102" y="42" width="13" height="12" rx="3" fill="#dd6b20"/>
+    <rect x="92" y="32" width="15" height="13" rx="3" fill="#c53030"/>
+    <!-- Mint Chutney Drizzle -->
+    <path d="M80,50 Q100,35 120,50" stroke="#38a169" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <!-- Chaat Masala Sumac Onions -->
+    <circle cx="88" cy="40" r="3" fill="#9b2c2c"/>
+    <circle cx="110" cy="38" r="3" fill="#9b2c2c"/>
+  </g>
+</svg>

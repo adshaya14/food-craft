@@ -1,0 +1,3484 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FOOD CRAFT — Multi-Dish Customization Studio & Kitchen</title>
+  <meta name="description"
+    content="Artisanal food studio. Customize your own Shawarmas, Smash Burgers, Woodfired Pizzas, Charcoal Grills, and Biryani Bowls with your exact ingredients and live interactive cooking!">
+
+  <!-- Modern Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 16C6 8 10 4 16 4s10 4 10 12-4 12-10 12S6 24 6 16z' fill='%23ff5722'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23f59e0b'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg-deep: #0c100d;
+      --bg-card: #141b16;
+      --bg-card-hover: #1a231d;
+      --bg-glass: rgba(20, 27, 22, 0.75);
+      --border: #253329;
+      --border-light: #34463a;
+
+      --primary: #ff5722;
+      --primary-glow: rgba(255, 87, 34, 0.35);
+      --accent: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.3);
+      --green: #10b981;
+      --green-glow: rgba(16, 185, 129, 0.25);
+
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+
+      --B: clamp(290px, min(34vw, calc(100svh - 440px)), 480px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      background: var(--bg-deep);
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: "Outfit", system-ui, sans-serif;
+      color: var(--text-main);
+      min-height: 100svh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, #ff572218, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 85% 40%, #f59e0b10, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 15% 70%, #10b9810d, transparent 60%),
+        #0c100d;
+      background-attachment: fixed;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: linear-gradient(to right, #ffffff05 1px, transparent 1px),
+        linear-gradient(to bottom, #ffffff05 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, #000 60%, transparent 100%);
+    }
+
+    button,
+    input {
+      font: inherit;
+      color: inherit
+    }
+
+    button {
+      background: none;
+      border: 0;
+      cursor: pointer
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 28px
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 16, 13, 0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid #ffffff0a;
+    }
+
+    .brand {
+      font: 800 24px "Space Grotesk", sans-serif;
+      letter-spacing: -.03em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ff5722, #f59e0b);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      box-shadow: 0 0 18px var(--primary-glow);
+    }
+
+    .brand em {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--primary);
+      padding-left: 2px;
+    }
+
+    .brand-badge {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      background: #ff572224;
+      color: #ff7043;
+      padding: 4px 9px;
+      border-radius: 99px;
+      border: 1px solid #ff572240;
+      margin-left: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+      transition: all .2s ease;
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a:hover {
+      color: #fff
+    }
+
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .btn-fire {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      height: 44px;
+      padding: 0 22px;
+      border-radius: 12px;
+      font: 700 14px "Space Grotesk", sans-serif;
+      letter-spacing: .02em;
+      color: #fff;
+      background: linear-gradient(135deg, #ff5722 0%, #e64a19 100%);
+      border: 1px solid #ff704380;
+      box-shadow: 0 4px 18px var(--primary-glow);
+      transition: all .2s cubic-bezier(.3, 1.4, .5, 1);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-fire:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--primary-glow);
+      background: linear-gradient(135deg, #ff7043 0%, #ff5722 100%);
+    }
+
+    .btn-fire:active {
+      transform: translateY(1px)
+    }
+
+    .btn-glass {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font: 600 14px "Space Grotesk", sans-serif;
+      color: var(--text-main);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: all .2s ease;
+    }
+
+    .btn-glass:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .cart-counter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: #000;
+      font-weight: 900;
+      font-size: 12px;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      padding: 0 5px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 34px 0 16px;
+      position: relative;
+    }
+
+    .pill-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 99px;
+      background: #10b98115;
+      border: 1px solid #10b98135;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .pill-status i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
+    }
+
+    h1 {
+      font: 800 clamp(32px, 4.5vw, 62px)/1.08 "Space Grotesk", sans-serif;
+      letter-spacing: -.035em;
+      margin: 8px auto 0;
+      max-width: 940px;
+    }
+
+    h1 em {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 500;
+      background: linear-gradient(135deg, #ff8a65 20%, #f59e0b 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 0 4px;
+    }
+
+    .hero-sub {
+      max-width: 700px;
+      margin: 12px auto 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .hero-sub b {
+      color: #fff;
+      font-weight: 600
+    }
+
+    /* ==============================================================
+   SECTION 1: THE MULTI-DISH CRAFT STUDIO
+   ============================================================== */
+    .studio-section {
+      padding: 18px 0 40px
+    }
+
+    /* Studio Dish Mode Tabs (Switch between Shawarma, Burger, Pizza, Grill, Bowl) */
+    .dish-selector-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .station-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 20px;
+      border-radius: 14px;
+      font: 700 14px "Space Grotesk", sans-serif;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      transition: all .22s cubic-bezier(.3, 1.4, .5, 1);
+      cursor: pointer;
+    }
+
+    .station-btn:hover {
+      background: var(--bg-card-hover);
+      color: #fff;
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .station-btn.active {
+      background: linear-gradient(135deg, #ff572224, #f59e0b18);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 22px var(--primary-glow);
+    }
+
+    .station-btn span.emoji {
+      font-size: 18px
+    }
+
+    .station-btn .hint-tag {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 99px;
+      background: #ffffff18;
+      color: var(--text-main);
+    }
+
+    .station-btn.active .hint-tag {
+      background: var(--primary);
+      color: #fff
+    }
+
+    .studio-box {
+      background: linear-gradient(180deg, #131b16 0%, #0d120f 100%);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 24px 28px 26px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .studio-box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    .studio-header-banner {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .studio-header-banner h2 {
+      font: 700 22px "Space Grotesk", sans-serif;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+
+    .studio-header-banner p {
+      font-size: 13.5px;
+      color: var(--accent);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: minmax(190px, 1fr) var(--B) minmax(260px, 1.1fr);
+      gap: 16px clamp(16px, 2.5vw, 36px);
+      align-items: center;
+      max-width: 1260px;
+      margin: 6px auto 0;
+    }
+
+    .studio-left {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      justify-self: end
+    }
+
+    .studio-right {
+      justify-self: start;
+      width: 100%;
+      max-width: 330px
+    }
+
+    .hud-tag {
+      position: absolute;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: #f59e0b1f;
+      border: 1px solid #f59e0b40;
+      padding: 4px 10px;
+      border-radius: 99px;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+
+    .hud-tag.hide {
+      opacity: 0
+    }
+
+    /* Rotisserie Spit */
+    .spit {
+      position: relative;
+      width: 145px;
+      height: 330px;
+      cursor: pointer;
+      flex: none;
+    }
+
+    .spit .heat {
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      top: 10%;
+      bottom: 10%;
+      border-radius: 50%;
+      background: radial-gradient(#ff5722cc, #ff3d0044 50%, transparent 72%);
+      filter: blur(14px);
+      animation: heat 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes heat {
+      to {
+        opacity: .5;
+        transform: scale(.92)
+      }
+    }
+
+    .spit .meat,
+    .spit .sheen {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%
+    }
+
+    .spit .meat {
+      object-fit: contain;
+      filter: drop-shadow(0 16px 18px rgba(0, 0, 0, 0.7));
+      pointer-events: none;
+      -webkit-user-drag: none
+    }
+
+    .spit .sheen {
+      -webkit-mask: url(assets/food/spit.png) center/contain no-repeat;
+      mask: url(assets/food/spit.png) center/contain no-repeat;
+      background: linear-gradient(90deg, transparent 30%, #ffe9c077 42%, #fff9 48%, transparent 62%) 0 0/220% 100%;
+      animation: spin 2.6s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes spin {
+      from {
+        background-position: 130% 0
+      }
+
+      to {
+        background-position: -30% 0
+      }
+    }
+
+    .spit .carve {
+      position: absolute;
+      left: 56%;
+      top: 20%;
+      width: 115px;
+      z-index: 3;
+      pointer-events: none;
+      transform: rotate(-8deg);
+      transform-origin: 20% 20%;
+      filter: drop-shadow(0 10px 10px #000);
+    }
+
+    .spit .carve img {
+      width: 100%;
+      display: block
+    }
+
+    .spit.cut .carve {
+      animation: carve .9s ease-in-out
+    }
+
+    @keyframes carve {
+      0% {
+        transform: rotate(-8deg)
+      }
+
+      25% {
+        transform: translate(-14px, 70px) rotate(-14deg)
+      }
+
+      45% {
+        transform: translate(0, 10px) rotate(-8deg)
+      }
+
+      70% {
+        transform: translate(-14px, 95px) rotate(-14deg)
+      }
+
+      100% {
+        transform: rotate(-8deg)
+      }
+    }
+
+    .spit .hud-tag {
+      left: 50%;
+      top: -30px;
+      transform: translateX(-50%)
+    }
+
+    .shaving {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 44px;
+      z-index: 70;
+      pointer-events: none
+    }
+
+    /* Sauce Spreader & Spatula */
+    .dish {
+      position: relative;
+      width: 170px;
+      height: 190px;
+      flex: none
+    }
+
+    .dish-img {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 135px;
+      filter: drop-shadow(0 12px 14px #000);
+      pointer-events: none
+    }
+
+    .spat {
+      position: absolute;
+      left: 30px;
+      top: 4px;
+      width: 115px;
+      height: 115px;
+      z-index: 5;
+      cursor: grab;
+      touch-action: none;
+      filter: drop-shadow(0 8px 8px #000);
+    }
+
+    .spat.home {
+      transition: transform .5s cubic-bezier(.3, 1.4, .5, 1)
+    }
+
+    .spat.drag {
+      cursor: grabbing;
+      z-index: 60
+    }
+
+    .spat img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      -webkit-user-drag: none
+    }
+
+    .spat .tip {
+      position: absolute;
+      left: 12%;
+      top: 11%;
+      width: 2px;
+      height: 2px
+    }
+
+    .dish .hud-tag {
+      left: -4px;
+      top: -26px
+    }
+
+    /* Cutting Board + Dish Canvas */
+    .board {
+      position: relative;
+      width: var(--B);
+      height: var(--B)
+    }
+
+    .board-img {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 28px 32px rgba(0, 0, 0, 0.7));
+      pointer-events: none;
+    }
+
+    .bread {
+      position: absolute;
+      left: 12%;
+      top: 12%;
+      width: 76%;
+      height: 76%;
+      z-index: 2;
+      touch-action: none
+    }
+
+    .bread>* {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%
+    }
+
+    .bread .base {
+      object-fit: contain;
+      filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.6));
+      -webkit-user-drag: none
+    }
+
+    .bread canvas {
+      pointer-events: none
+    }
+
+    .tops>div {
+      position: absolute;
+      inset: 0
+    }
+
+    .pc {
+      position: absolute;
+      transform: translate(-50%, -50%) rotate(var(--r, 0deg))
+    }
+
+    .pc img {
+      display: block;
+      width: 100%;
+      -webkit-user-drag: none;
+      filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.5))
+    }
+
+    .bread.out {
+      visibility: hidden
+    }
+
+    .bread.hover {
+      filter: drop-shadow(0 0 16px var(--accent))
+    }
+
+    .piece {
+      animation: drop .55s cubic-bezier(.3, 1.55, .5, 1) both;
+      animation-delay: var(--d, 0s)
+    }
+
+    @keyframes drop {
+      from {
+        transform: translateY(-26px) scale(.35);
+        opacity: 0
+      }
+    }
+
+    .drizzle img {
+      clip-path: inset(0 100% 0 0);
+      animation: reveal 1.2s ease-out forwards
+    }
+
+    @keyframes reveal {
+      to {
+        clip-path: inset(0 0 0 0)
+      }
+    }
+
+    /* 3D Fold / Finish Transformation */
+    .bread .fold {
+      object-fit: contain;
+      opacity: 0;
+      -webkit-user-drag: none;
+      pointer-events: none;
+      transition: transform .7s cubic-bezier(.6, 0, .3, 1)
+    }
+
+    .bread .fold.l {
+      clip-path: inset(0 64% 0 0);
+      transform-origin: 36% 50%
+    }
+
+    .bread .fold.r {
+      clip-path: inset(0 0 0 64%);
+      transform-origin: 64% 50%
+    }
+
+    .bread .base,
+    .bread canvas,
+    .bread .tops {
+      transition: clip-path .7s cubic-bezier(.6, 0, .3, 1)
+    }
+
+    .bread.folding .fold {
+      opacity: 1
+    }
+
+    .bread.folding .fold.l {
+      transform: perspective(900px) rotateY(180deg)
+    }
+
+    .bread.folding .fold.r {
+      transform: perspective(900px) rotateY(-180deg)
+    }
+
+    .bread.folding .base,
+    .bread.folding canvas,
+    .bread.folding .tops {
+      clip-path: inset(4% 30% 4% 30% round 40px)
+    }
+
+    /* Finished Package / Platter Result */
+    .rolled {
+      position: absolute;
+      left: 50%;
+      top: 49%;
+      height: 98%;
+      aspect-ratio: 229/386;
+      z-index: 5;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(-14deg) scale(.6);
+      transition: opacity .35s, transform .6s cubic-bezier(.3, 1.5, .5, 1);
+    }
+
+    .rolled.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(-14deg)
+    }
+
+    .rolled>img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.8))
+    }
+
+    .seal {
+      position: absolute;
+      left: 50%;
+      top: 70%;
+      width: 44%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ff7a62, #d83a2b 60%, #901d12);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6), inset 0 0 0 3px rgba(255, 255, 255, 0.4);
+      transform: translate(-50%, -50%) scale(0) rotate(-30deg);
+      transition: transform .55s cubic-bezier(.3, 1.8, .5, 1);
+    }
+
+    .seal b {
+      font: 700 clamp(11px, 1.2vw, 15px) "Space Grotesk", sans-serif;
+      white-space: nowrap
+    }
+
+    .seal small {
+      font: 800 clamp(8px, .8vw, 10px) "Outfit", sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-top: 2px
+    }
+
+    .for {
+      position: absolute;
+      left: 58%;
+      top: 84%;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: clamp(17px, 2vw, 24px);
+      color: #121814;
+      white-space: nowrap;
+      background: #f3f4f6;
+      padding: 2px 12px 4px;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: rotate(14deg) translateY(8px);
+      transition: opacity .4s .25s, transform .4s .25s;
+    }
+
+    .rolled.sealed .seal {
+      transform: translate(-50%, -50%) scale(1) rotate(10deg)
+    }
+
+    .rolled.sealed .for {
+      opacity: 1;
+      transform: rotate(14deg)
+    }
+
+    .rolled.show.hop {
+      animation: hop .6s cubic-bezier(.3, 1.6, .5, 1)
+    }
+
+    @keyframes hop {
+      40% {
+        transform: translate(-50%, -55%) rotate(-19deg) scale(1.05)
+      }
+    }
+
+    /* Sauce Meter */
+    .board .meter {
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #141b16;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+      z-index: 6;
+      white-space: nowrap;
+      transition: opacity .3s;
+      color: var(--text-muted);
+    }
+
+    .board.done .meter {
+      opacity: 0
+    }
+
+    .meter .bar {
+      width: 80px;
+      height: 7px;
+      border-radius: 9px;
+      background: #253329;
+      overflow: hidden
+    }
+
+    .meter .bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 9px;
+      transition: width .2s
+    }
+
+    /* Dynamic Toppings Shelf */
+    .shelf {
+      grid-column: 1/-1;
+      position: relative;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 20px;
+      background: #141b16b3;
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+      gap: 8px;
+      max-width: 1200px;
+      width: 100%;
+      justify-self: center;
+      touch-action: pan-x pan-y;
+    }
+
+    .shelf .hud-tag {
+      right: 20px;
+      top: -26px
+    }
+
+    .top {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 8px 4px;
+      border-radius: 14px;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+      background: #1a231d80;
+      border: 1px solid transparent;
+      transition: all .2s ease;
+      overflow: hidden;
+    }
+
+    .top:hover {
+      transform: translateY(-3px);
+      background: #222e26;
+      border-color: var(--border-light)
+    }
+
+    .top:active {
+      transform: scale(.96)
+    }
+
+    .top img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.5));
+      pointer-events: none;
+      -webkit-user-drag: none
+    }
+
+    .top b {
+      font: 600 12px "Space Grotesk", sans-serif;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 88px;
+      text-align: center
+    }
+
+    .top small {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent)
+    }
+
+    .top.on small {
+      color: var(--primary)
+    }
+
+    .top.on {
+      border-color: var(--primary);
+      background: #ff572215
+    }
+
+    .top.on::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 8px var(--primary)
+    }
+
+    .shelf.wiggle .top {
+      animation: wig .5s ease-in-out
+    }
+
+    @keyframes wig {
+      30% {
+        transform: translateY(-8px) rotate(-4deg)
+      }
+
+      60% {
+        transform: translateY(0) rotate(3deg)
+      }
+    }
+
+    .ghost,
+    .flight-particle {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 74px;
+      height: 74px;
+      z-index: 99;
+      pointer-events: none;
+      filter: drop-shadow(0 14px 12px rgba(0, 0, 0, 0.8));
+      will-change: transform, opacity
+    }
+
+    .ghost img,
+    .flight-particle img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none
+    }
+
+    /* Digital POS Ticket */
+    .pos-ticket {
+      position: relative;
+      background: #18211b;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 20px 22px;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.45);
+    }
+
+    .ticket-head {
+      text-align: center;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 12px
+    }
+
+    .ticket-head h3 {
+      font: 700 20px "Space Grotesk", sans-serif;
+      letter-spacing: -.01em;
+      color: #fff
+    }
+
+    .ticket-head h3 em {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      color: var(--primary)
+    }
+
+    .ticket-head p {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 2px
+    }
+
+    .ticket-lines {
+      list-style: none;
+      padding: 10px 4px 6px 0;
+      min-height: 110px;
+      max-height: 210px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      font-size: 13.5px
+    }
+
+    .ticket-lines li {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 4px 0;
+      overflow: hidden;
+      animation: print .4s ease both
+    }
+
+    @keyframes print {
+      from {
+        max-height: 0;
+        opacity: 0
+      }
+
+      to {
+        max-height: 34px;
+        opacity: 1
+      }
+    }
+
+    .ticket-lines li span {
+      font-weight: 600;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .ticket-lines li i {
+      flex: 1;
+      border-bottom: 1px dotted var(--border);
+      transform: translateY(-4px)
+    }
+
+    .ticket-lines li em {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums
+    }
+
+    .ticket-lines li .del-btn {
+      font-size: 11px;
+      color: #f87171;
+      background: #7f1d1d33;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+
+    .ticket-lines li.flash {
+      background: #f59e0b22;
+      border-radius: 6px
+    }
+
+    .chef-note-box {
+      border-top: 1px dashed var(--border);
+      padding-top: 10px;
+      min-height: 76px
+    }
+
+    .chef-note-box .k {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--primary)
+    }
+
+    .chef-note-box h4 {
+      font: 600 17px "Space Grotesk", sans-serif;
+      color: #fff;
+      margin-top: 2px
+    }
+
+    .chef-note-box p {
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      margin-top: 3px
+    }
+
+    .chef-note-box.pop {
+      animation: nowPop .5s cubic-bezier(.3, 1.6, .5, 1)
+    }
+
+    @keyframes nowPop {
+      from {
+        transform: scale(.95);
+        opacity: .3
+      }
+    }
+
+    .ticket-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-top: 1px dashed var(--border);
+      margin-top: 8px;
+      padding-top: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .ticket-foot b {
+      font: 700 28px "Space Grotesk", sans-serif;
+      color: #fff;
+      font-variant-numeric: tabular-nums
+    }
+
+    .serve-actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px
+    }
+
+    .serve-actions button {
+      flex: 1
+    }
+
+    /* ==============================================================
+   SECTION 2: FULL KITCHEN MENU (24 DISHES IN RUPEES)
+   ============================================================== */
+    .menu-section {
+      padding: 56px 0 60px;
+      margin-top: 20px
+    }
+
+    .menu-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 26px
+    }
+
+    .menu-header h2 {
+      font: 800 clamp(28px, 3.8vw, 48px) "Space Grotesk", sans-serif;
+      letter-spacing: -.03em
+    }
+
+    .menu-header h2 em {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--primary)
+    }
+
+    .menu-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.5
+    }
+
+    .cat-filter-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .cat-filter-bar::-webkit-scrollbar {
+      display: none
+    }
+
+    .cat-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font: 600 13px "Space Grotesk", sans-serif;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      white-space: nowrap;
+      transition: all .18s ease;
+      cursor: pointer;
+    }
+
+    .cat-pill-btn:hover {
+      background: var(--bg-card-hover);
+      color: #fff;
+      border-color: var(--border-light)
+    }
+
+    .cat-pill-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 0 16px var(--primary-glow);
+    }
+
+    .cat-pill-btn span.emoji {
+      font-size: 16px
+    }
+
+    .cat-pill-btn span.count {
+      font-size: 11px;
+      background: #00000033;
+      padding: 2px 7px;
+      border-radius: 99px;
+      font-weight: 700
+    }
+
+    .cat-pill-btn.active span.count {
+      background: #ffffff33
+    }
+
+    .filter-search-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .diet-bar {
+      display: flex;
+      gap: 8px
+    }
+
+    .diet-tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all .15s ease;
+    }
+
+    .diet-tag:hover,
+    .diet-tag.active {
+      color: #fff;
+      border-color: var(--border-light)
+    }
+
+    .diet-tag.active {
+      background: #10b98120;
+      color: var(--green);
+      border-color: #10b98160
+    }
+
+    .search-input-wrap {
+      position: relative;
+      min-width: 250px
+    }
+
+    .search-input-wrap input {
+      width: 100%;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 0 14px 0 36px;
+      font-size: 13.5px;
+      color: #fff;
+      outline: none;
+    }
+
+    .search-input-wrap input:focus {
+      border-color: var(--primary)
+    }
+
+    .search-input-wrap i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-style: normal;
+      opacity: .5
+    }
+
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 22px;
+    }
+
+    .dish-card {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      transition: all .25s cubic-bezier(.3, 1.4, .5, 1);
+    }
+
+    .dish-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-light);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(255, 87, 34, 0.1);
+      background: var(--bg-card-hover);
+    }
+
+    .dish-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px
+    }
+
+    .diet-indicator {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--green);
+      padding: 2px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 4px;
+      background: #000;
+    }
+
+    .diet-indicator.non-veg {
+      border-color: #ef4444
+    }
+
+    .diet-indicator i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      display: block
+    }
+
+    .diet-indicator.non-veg i {
+      background: #ef4444
+    }
+
+    .dish-badge {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: #f59e0b1f;
+      color: var(--accent);
+      border: 1px solid #f59e0b35;
+    }
+
+    .dish-badge.spicy {
+      background: #ef444420;
+      color: #f87171;
+      border-color: #ef444440
+    }
+
+    .dish-badge.chef {
+      background: #10b98120;
+      color: #34d399;
+      border-color: #10b98140
+    }
+
+    .dish-art {
+      position: relative;
+      width: 100%;
+      height: 148px;
+      display: grid;
+      place-items: center;
+      margin: 4px 0 10px
+    }
+
+    .dish-art img {
+      max-width: 138px;
+      max-height: 138px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.6));
+      transition: transform .3s cubic-bezier(.3, 1.5, .5, 1);
+    }
+
+    .dish-card:hover .dish-art img {
+      transform: scale(1.08) rotate(-2deg)
+    }
+
+    .dish-details h3 {
+      font: 700 18px "Space Grotesk", sans-serif;
+      color: #fff;
+      letter-spacing: -.01em
+    }
+
+    .dish-details p {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--text-muted);
+      margin: 6px 0 12px;
+      min-height: 38px
+    }
+
+    .dish-bottom {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+      margin-top: auto;
+    }
+
+    .dish-price {
+      font: 700 22px "Space Grotesk", sans-serif;
+      color: #fff
+    }
+
+    .dish-price span {
+      font-size: 15px;
+      color: var(--primary);
+      margin-right: 2px
+    }
+
+    .dish-ctrls {
+      display: flex;
+      gap: 6px;
+      align-items: center
+    }
+
+    .qty-stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #243228;
+      border-radius: 8px;
+      padding: 3px 6px;
+      font-weight: 700;
+      font-size: 13px;
+      color: #fff;
+    }
+
+    .qty-stepper button {
+      font-size: 15px;
+      font-weight: 900;
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 4px;
+      background: #141b16;
+      color: #fff;
+    }
+
+    /* Modals */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .card {
+      position: relative;
+      width: min(480px, 100%);
+      max-height: calc(100svh - 32px);
+      overflow: auto;
+      background: #141b16;
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+      transform: translateY(30px) scale(.9);
+      transition: transform .4s cubic-bezier(.3, 1.4, .5, 1);
+    }
+
+    .modal.show .card {
+      transform: none
+    }
+
+    .card .k {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--primary)
+    }
+
+    .card h2 {
+      font: 700 28px "Space Grotesk", sans-serif;
+      color: #fff;
+      margin-top: 6px
+    }
+
+    .card h2 em {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      color: var(--primary)
+    }
+
+    .card p {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--text-muted);
+      margin-top: 8px
+    }
+
+    .x-close {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #243228;
+      font-weight: 800;
+      font-size: 14px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+    }
+
+    .sum-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 14px;
+      font-size: 14px;
+      max-height: 160px;
+      overflow-y: auto
+    }
+
+    .sum-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border)
+    }
+
+    .sum-list li b {
+      font-variant-numeric: tabular-nums;
+      color: var(--accent)
+    }
+
+    .sum-list li.tot {
+      border: 0;
+      font: 700 18px "Space Grotesk", sans-serif;
+      color: #fff;
+      padding-top: 10px
+    }
+
+    .sum-list li.tot b {
+      color: var(--primary);
+      font-size: 20px
+    }
+
+    .form-field {
+      margin-top: 14px
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .form-field input {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #1a231d;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: #fff;
+      outline: none;
+    }
+
+    .form-field input:focus {
+      border-color: var(--primary)
+    }
+
+    .time-clock {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .time-clock button {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #243228;
+      font-weight: 900;
+      font-size: 18px;
+      color: #fff
+    }
+
+    .time-flip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font: 700 26px "Space Grotesk", sans-serif
+    }
+
+    .time-flip span {
+      display: inline-block;
+      min-width: 52px;
+      text-align: center;
+      padding: 4px 6px;
+      border-radius: 8px;
+      background: #243228;
+      color: #fff;
+      box-shadow: 0 3px 0 #0d120f;
+    }
+
+    .time-flip span.f {
+      animation: flipIt .35s ease
+    }
+
+    @keyframes flipIt {
+      0% {
+        transform: rotateX(0)
+      }
+
+      50% {
+        transform: rotateX(90deg)
+      }
+
+      100% {
+        transform: rotateX(0)
+      }
+    }
+
+    .toast-bar {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 99px;
+      font: 700 13px "Space Grotesk", sans-serif;
+      box-shadow: 0 10px 25px var(--primary-glow);
+      opacity: 0;
+      transition: all .3s cubic-bezier(.3, 1.4, .5, 1);
+      z-index: 99;
+    }
+
+    .toast-bar.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1
+    }
+
+    /* Responsive */
+    @media (max-width:1100px) {
+      .wrap {
+        padding: 0 20px
+      }
+
+      :root {
+        --B: clamp(290px, min(44vw, calc(100svh - 380px)), 440px)
+      }
+
+      .studio-grid {
+        grid-template-columns: var(--B) minmax(0, 1fr)
+      }
+
+      .studio-left {
+        grid-column: 1/-1;
+        grid-row: 1;
+        justify-self: center;
+        gap: 36px
+      }
+
+      .studio-right {
+        max-width: 340px
+      }
+
+      .shelf {
+        grid-template-columns: repeat(6, 1fr)
+      }
+    }
+
+    @media (max-width:768px) {
+      .wrap {
+        padding: 0 14px
+      }
+
+      nav {
+        flex-wrap: wrap;
+        row-gap: 12px
+      }
+
+      .brand {
+        font-size: 22px
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 18px
+      }
+
+      .studio-grid {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center
+      }
+
+      .studio-left {
+        gap: 10px;
+        transform: scale(.72);
+        margin: -30px 0 -70px
+      }
+
+      .studio-right {
+        justify-self: center;
+        max-width: 400px;
+        order: 3
+      }
+
+      .shelf {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 10px 6px;
+        margin-top: 20px;
+        order: 2
+      }
+
+      .top img {
+        width: 46px;
+        height: 46px
+      }
+
+      .dishes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 14px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <!-- Navbar -->
+    <nav>
+      <a class="brand" href="#" aria-label="ROLL CRAFT Home">
+        <span class="brand-icon">🔥</span>
+        <span>FOOD<em>CRAFT</em></span>
+        <span class="brand-badge">Food Studio</span>
+      </a>
+      <div class="nav-links">
+        <a href="#studio">Live Craft Studio</a>
+        <a href="#menu">Full Menu</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn-fire" id="navCartBtn">
+          <span>Cart</span>
+          <span class="cart-counter" id="cartBadge">0</span>
+          <span>→</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="pill-status">
+        <i></i>
+        <span>Artisanal Kitchen · Custom Build Any Dish · Open 11am – 11pm</span>
+      </div>
+      <h1>Craft your dish, <em>ingredient by ingredient.</em></h1>
+      <p class="hero-sub">
+        Select any dish below to customize your base, sauce, meats, cheeses, and signature drizzles with our <b>live
+          interactive kitchen station</b>!
+      </p>
+    </header>
+
+    <!-- ==============================================================
+       SECTION 1: THE MULTI-DISH LIVE CRAFT STUDIO
+       ============================================================== -->
+    <section class="studio-section" id="studio">
+      <!-- Dish Selector Bar: Switch between Shawarma, Burger, Pizza, Grill, Bowl -->
+      <div class="dish-selector-bar" id="stationSelector">
+        <button class="station-btn active" data-mode="shawarma">
+          <span class="emoji">🌯</span>
+          <span>Shawarma & Rolls</span>
+          <span class="hint-tag">Base ₹40</span>
+        </button>
+        <button class="station-btn" data-mode="burger">
+          <span class="emoji">🍔</span>
+          <span>Smash Burgers</span>
+          <span class="hint-tag">Base ₹40</span>
+        </button>
+        <button class="station-btn" data-mode="pizza">
+          <span class="emoji">🍕</span>
+          <span>Woodfired Pizza</span>
+          <span class="hint-tag">Base ₹90</span>
+        </button>
+        <button class="station-btn" data-mode="grill">
+          <span class="emoji">🍗</span>
+          <span>Charcoal Sizzler</span>
+          <span class="hint-tag">Base ₹50</span>
+        </button>
+        <button class="station-btn" data-mode="bowl">
+          <span class="emoji">🍚</span>
+          <span>Loaded Biryani Bowl</span>
+          <span class="hint-tag">Base ₹60</span>
+        </button>
+        <button class="station-btn" data-mode="drinks">
+          <span class="emoji">🥤</span>
+          <span>Drinks & Shakes</span>
+          <span class="hint-tag">Base ₹40</span>
+        </button>
+      </div>
+
+      <div class="studio-box">
+        <!-- Dynamic Title & Chef Tip -->
+        <div class="studio-header-banner">
+          <h2 id="studioTitle">🌯 Shawarma & Rolls Studio</h2>
+          <p id="studioDesc">Spread whipped garlic toum, carve spit chicken, drag your favorite toppings & roll it up!
+          </p>
+        </div>
+
+        <main class="studio-grid">
+          <!-- Left: Dynamic Chef Tool & Spit -->
+          <div class="studio-left">
+            <div class="dish">
+              <span class="hud-tag" id="spatTag">drag spatula across base ↘</span>
+              <img class="dish-img" id="sauceBowlImg" src="assets/food/sauce-bowl.png" alt="Sauce Bowl">
+              <div class="spat home" id="spat" role="button" tabindex="0"
+                aria-label="Sauce spatula. Drag across base or click to auto-spread.">
+                <img src="assets/food/spatula.png" alt="Spatula"><span class="tip" id="tip"></span>
+              </div>
+            </div>
+
+            <div class="spit" id="spit" role="button" tabindex="0"
+              aria-label="Tap to carve/grill protein onto your dish.">
+              <span class="hud-tag" id="spitTag">tap to carve meat ↓</span>
+              <div class="heat"></div>
+              <img class="meat" src="assets/food/spit.png" alt="Rotisserie Spit">
+              <div class="sheen"></div>
+              <div class="carve"><img src="assets/food/knife.png" alt="Carving knife"></div>
+            </div>
+          </div>
+
+          <!-- Center: Board with Dynamic Dish Base -->
+          <div class="board" id="board">
+            <img class="board-img" src="assets/food/board.png" alt="Wooden Cutting Board">
+
+            <div class="bread out" id="bread" aria-label="Your Dish Canvas">
+              <img class="base" id="baseImg" src="assets/food/flatbread.png" alt="Base Canvas">
+              <canvas id="sauce"></canvas>
+
+              <div class="tops" id="topsContainer" aria-hidden="true">
+                <!-- Dynamically populated topping layers -->
+              </div>
+
+              <img class="fold l" id="foldL" src="assets/food/flatbread.png" alt="">
+              <img class="fold r" id="foldR" src="assets/food/flatbread.png" alt="">
+            </div>
+
+            <!-- Finished Packaged / Plated Dish -->
+            <div class="rolled" id="rolled">
+              <img id="rolledImg" src="assets/food/wrap-done.png" alt="Completed Custom Dish">
+              <div class="seal">
+                <b id="sealBrand">ROLL CRAFT</b>
+                <small id="sealNo">Nº 042</small>
+              </div>
+              <div class="for" id="forWho"></div>
+            </div>
+
+            <!-- Sauce Percentage Meter -->
+            <div class="meter">
+              <span id="meterLabel">Sauced</span>
+              <span class="bar"><i id="mbar"></i></span>
+              <span id="mpct">0%</span>
+            </div>
+          </div>
+
+          <!-- Right: Modern POS Digital Slip -->
+          <aside class="studio-right">
+            <div class="pos-ticket" id="receipt">
+              <div class="ticket-head">
+                <h3>ROLL<em>CRAFT</em></h3>
+                <p>Ticket Nº <span id="ono">042</span> · Custom Studio</p>
+              </div>
+              <ul class="ticket-lines" id="lines"></ul>
+              <div class="chef-note-box" id="now">
+                <div class="k">Chef's studio</div>
+                <h4 id="chefStatusTitle">Base heating…</h4>
+                <p id="chefStatusText">Your fresh artisanal base is warmed on the griddle.</p>
+              </div>
+              <div class="ticket-foot">
+                <span>Total</span>
+                <b id="total">₹0</b>
+              </div>
+              <div class="serve-actions">
+                <button class="btn-fire" id="rollBtn">Roll it up ↻</button>
+                <button class="btn-glass" id="againBtn">Reset</button>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Dynamic Toppings Shelf (Updates for Shawarma, Burger, Pizza, Grill, Bowl) -->
+          <div class="shelf" id="shelf">
+            <span class="hud-tag" id="shelfTag">drag ingredients onto dish ↓</span>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+       SECTION 2: FULL KITCHEN MENU (24 DISHES IN RUPEES)
+       ============================================================== -->
+    <section class="menu-section" id="menu">
+      <div class="menu-header">
+        <h2>Explore All <em>27 Kitchen Dishes & Drinks</em></h2>
+        <p>Order direct or click <b>"Custom 🛠️"</b> to load any dish into our live craft studio!</p>
+      </div>
+
+      <!-- Category Filter Bar -->
+      <div class="cat-filter-bar" id="categoryBar">
+        <button class="cat-pill-btn active" data-cat="all">
+          <span class="emoji">🌟</span>
+          <span>All Dishes</span>
+          <span class="count">27</span>
+        </button>
+        <button class="cat-pill-btn" data-cat="shawarma">
+          <span class="emoji">🌯</span>
+          <span>Shawarmas & Wraps</span>
+          <span class="count">5</span>
+        </button>
+        <button class="cat-pill-btn" data-cat="burgers">
+          <span class="emoji">🍔</span>
+          <span>Smash Burgers</span>
+          <span class="count">4</span>
+        </button>
+        <button class="cat-pill-btn" data-cat="pizzas">
+          <span class="emoji">🍕</span>
+          <span>Artisanal Pizzas</span>
+          <span class="count">4</span>
+        </button>
+        <button class="cat-pill-btn" data-cat="grill">
+          <span class="emoji">🍗</span>
+          <span>Charcoal Grills</span>
+          <span class="count">4</span>
+        </button>
+        <button class="cat-pill-btn" data-cat="bowls">
+          <span class="emoji">🍚</span>
+          <span>Loaded Bowls</span>
+          <span class="count">4</span>
+        </button>
+        <button class="cat-pill-btn" data-cat="drinks">
+          <span class="emoji">🥤</span>
+          <span>Drinks & Shakes</span>
+          <span class="count">4</span>
+        </button>
+        <button class="cat-pill-btn" data-cat="sides">
+          <span class="emoji">🍟</span>
+          <span>Sides & Fries</span>
+          <span class="count">2</span>
+        </button>
+      </div>
+
+      <!-- Diet & Search -->
+      <div class="filter-search-row">
+        <div class="diet-bar">
+          <button class="diet-tag active" data-diet="all">All Items</button>
+          <button class="diet-tag" data-diet="non-veg">🍗 Non-Veg</button>
+          <button class="diet-tag" data-diet="veg">🌱 Pure Veg</button>
+          <button class="diet-tag" data-diet="chef">⭐ Chef's Picks</button>
+        </div>
+
+        <div class="search-input-wrap">
+          <i>🔍</i>
+          <input type="text" id="menuSearch" placeholder="Search dish, ingredients...">
+        </div>
+      </div>
+
+      <!-- Dishes Grid -->
+      <div class="dishes-grid" id="dishesGrid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="visit" style="padding:40px 0 30px;text-align:center">
+      <div
+        style="display:inline-flex;align-items:center;gap:10px;padding:8px 20px;border-radius:999px;background:var(--bg-card);border:1px solid var(--border);font:600 13px 'Space Grotesk',sans-serif;color:var(--text-muted);margin-bottom:12px">
+        <span>📍 <b>8 Spice Street, Food Quarter</b></span>
+        <span>•</span>
+        <span>⏰ Open 11:00 AM – 11:00 PM Daily</span>
+      </div>
+      <p style="font-size:13px;color:var(--text-dim)">
+        Pick-up counter at front window · Handcrafted with live charcoal smoke · Made with love by ROLL CRAFT.
+      </p>
+    </footer>
+  </div>
+
+  <!-- ==============================================================
+     MODAL: CHECKOUT & PICKUP TIME (IN RUPEES ₹)
+     ============================================================== -->
+  <div class="modal" id="checkout" role="dialog" aria-modal="true" aria-labelledby="coTitle">
+    <div class="card">
+      <button class="x-close" data-close aria-label="Close">✕</button>
+      <div class="k">Checkout Slip</div>
+      <h2 id="coTitle">Hungry? <em>Almost Ready.</em></h2>
+
+      <ul class="sum-list" id="sum"></ul>
+
+      <div class="form-field">
+        <label>Pick-up Time</label>
+        <div class="time-clock">
+          <button id="tMinus" aria-label="Earlier">−</button>
+          <div class="time-flip" aria-live="polite">
+            <span id="hh">12</span>:<span id="mm">30</span>
+          </div>
+          <button id="tPlus" aria-label="Later">+</button>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="who">Your Name</label>
+        <input id="who" placeholder="e.g. Arun / Priya" maxlength="30" autocomplete="given-name">
+      </div>
+
+      <div class="form-field">
+        <label for="note">Kitchen Cooking Notes (Optional)</label>
+        <input id="note" placeholder="e.g. Extra spicy, keep garlic sauce on side">
+      </div>
+
+      <div style="margin-top:20px;display:flex;gap:10px">
+        <button class="btn-fire" id="placeBtn" style="flex:1">Place Pickup Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+     MODAL: CONFIRMATION & ORDER DETAILS
+     ============================================================== -->
+  <div class="modal" id="confirm" role="dialog" aria-modal="true" aria-labelledby="cfTitle">
+    <div class="card">
+      <button class="x-close" data-close aria-label="Close">✕</button>
+      <div class="k">Order Confirmed!</div>
+      <h2 id="cfTitle">Order Nº 042 is <em>Locked In!</em></h2>
+      <p id="cfText">Your custom orders have been sent to our kitchen team. Hot, fresh, and ready for pickup!</p>
+
+      <div
+        style="background:#1a231d;border:1px solid var(--border);border-radius:14px;padding:14px;margin-top:16px;font-size:13px;line-height:1.6">
+        <b style="color:#fff">Order Breakdown:</b>
+        <div id="cfSummary" style="margin-top:6px;color:var(--text-muted)"></div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-fire" id="againBtn2" style="flex:1">Craft Another ↻</button>
+        <button class="btn-glass" id="waShareBtn"
+          style="flex:1;background:#25d36622;border-color:#25d36660;color:#25d366">
+          <span>📲 Send to WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast-bar" id="toast"></div>
+
+  <!-- ==============================================================
+     JAVASCRIPT: MULTI-DISH CUSTOMIZATION ENGINE
+     ============================================================== -->
+  <script>
+    (() => {
+      const $ = s => document.querySelector(s);
+      const $$ = s => document.querySelectorAll(s);
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // RUPEES FORMATTER
+      const inr = n => "₹" + Math.round(n);
+
+      function showToast(msg) {
+        const t = $("#toast");
+        t.textContent = msg;
+        t.classList.add("show");
+        clearTimeout(t._timer);
+        t._timer = setTimeout(() => t.classList.remove("show"), 2200);
+      }
+
+      /* ----------------------------------------------------------------
+         1. MULTI-DISH STUDIO DEFINITIONS (SHAWARMA, BURGER, PIZZA, GRILL, BOWL, DRINKS)
+         ---------------------------------------------------------------- */
+      const STUDIO_MODES = {
+        shawarma: {
+          name: "Shawarma",
+          title: "🌯 Shawarma & Rolls Studio",
+          desc: "Spread whipped garlic toum, carve spit chicken, drag your favorite toppings & roll!",
+          baseName: "Artisanal Flatbread",
+          basePrice: 40,
+          baseImg: "assets/food/flatbread.png",
+          sauceName: "Whipped Garlic Toum",
+          saucePrice: 20,
+          sauceColor: ["#fffef8", "#f6f1e2", "#ece4cc"],
+          actionBtn: "Roll it up ↻",
+          doneImg: "assets/food/wrap-done.png",
+          doneText: "Rolled tight in butcher wrap!",
+          toppings: [
+            { id: "chicken", name: "Chicken Shawarma", short: "Chicken", price: 80, icon: "chicken", note: "Carved straight off the vertical rotisserie spit." },
+            { id: "beef", name: "Crispy Spiced Beef", short: "Beef", price: 100, icon: "beef", note: "Thinly shaved seasoned beef, crispy char at edges." },
+            { id: "falafel", name: "Green Falafel", short: "Falafel", price: 50, icon: "falafel", note: "Crunchy chickpea & parsley falafels." },
+            { id: "lettuce", name: "Crisp Lettuce", short: "Lettuce", price: 15, icon: "lettuce", note: "Cold, shredded iceberg lettuce." },
+            { id: "tomato", name: "Ripe Tomato", short: "Tomato", price: 15, icon: "tomato", note: "Ripe summer tomatoes sliced thin." },
+            { id: "pickles", name: "House Pickles", short: "Pickles", price: 20, icon: "pickles", note: "Sour Lebanese pickles for crunch." },
+            { id: "onion", name: "Sumac Red Onions", short: "Onions", price: 15, icon: "onion", note: "Sliced red onions tossed in tangy sumac." },
+            { id: "fries", name: "French Fries Inside", short: "Fries", price: 30, icon: "fries", note: "Golden hot fries tucked inside the wrap." },
+            { id: "parsley", name: "Fresh Parsley", short: "Parsley", price: 10, icon: "parsley", note: "A fresh handful of chopped garden parsley." },
+            { id: "hot", name: "Hot Harissa Sauce", short: "Hot Sauce", price: 15, icon: "hot-drizzle", note: "Spicy harissa chilli drizzle." },
+            { id: "tahini", name: "Nutty Tahini", short: "Tahini", price: 20, icon: "tahini-drizzle", note: "Stoneground sesame tahini drizzle." }
+          ]
+        },
+        burger: {
+          name: "Burger",
+          title: "🍔 Smash Burger Studio",
+          desc: "Toasted brioche bun, spread secret sauce, stack patties, double cheese, veggies & crown!",
+          baseName: "Toasted Brioche Bun",
+          basePrice: 40,
+          baseImg: "assets/dishes/base-burger.svg",
+          sauceName: "Secret Burger Sauce",
+          saucePrice: 20,
+          sauceColor: ["#fff5ea", "#fed7aa", "#f97316"],
+          actionBtn: "Stack & Crown 🍔",
+          doneImg: "assets/dishes/burger-smash.svg",
+          doneText: "Stacked high with toasted crown!",
+          toppings: [
+            { id: "b_patty", name: "Smashed Beef Patty", short: "Smash Patty", price: 90, icon: "patty-beef", note: "Lacy-edged iron-seared beef patty." },
+            { id: "b_zinger", name: "Crispy Zinger Fillet", short: "Crispy Fillet", price: 80, icon: "patty-zinger", note: "Crunchy buttermilk fried chicken fillet." },
+            { id: "b_paneer", name: "Grilled Paneer Steak", short: "Paneer Steak", price: 60, icon: "patty-paneer", note: "Thick spiced tandoori cottage cheese." },
+            { id: "b_cheese", name: "Double Cheddar Cheese", short: "Cheddar Melt", price: 30, icon: "cheddar-slice", note: "Molten yellow American cheddar slices." },
+            { id: "b_onion", name: "Caramelized Onions", short: "Caramel Onions", price: 20, icon: "onion", note: "Sweet slow-cooked caramelized onions." },
+            { id: "b_pickles", name: "Pickled Gherkins", short: "Pickles", price: 15, icon: "pickles", note: "Crunchy tart dill gherkins." },
+            { id: "b_lettuce", name: "Iceberg Lettuce", short: "Lettuce", price: 15, icon: "lettuce", note: "Crisp shredded iceberg lettuce." },
+            { id: "b_tomato", name: "Fresh Tomato", short: "Tomato", price: 15, icon: "tomato", note: "Fresh ripe tomato slices." },
+            { id: "b_fries", name: "Crispy Fries Inside", short: "Fries", price: 30, icon: "fries", note: "Crunchy potato fries inside the burger." },
+            { id: "b_bbq", name: "Smoky BBQ Glaze", short: "BBQ Sauce", price: 20, icon: "chocolate-syrup", note: "Sweet molasses hickory BBQ glaze." },
+            { id: "b_mayo", name: "Garlic Truffle Mayo", short: "Truffle Mayo", price: 20, icon: "tahini-drizzle", note: "Velvety garlic truffle mayo." }
+          ]
+        },
+        pizza: {
+          name: "Pizza",
+          title: "🍕 Woodfired Pizza Studio",
+          desc: "Hand-stretched Neapolitan dough, San Marzano marinara, load mozzarella & toppings, woodfire bake!",
+          baseName: "Neapolitan Dough Crust",
+          basePrice: 90,
+          baseImg: "assets/dishes/base-pizza.svg",
+          sauceName: "San Marzano Marinara",
+          saucePrice: 30,
+          sauceColor: ["#fecaca", "#ef4444", "#991b1b"],
+          actionBtn: "Woodfire Bake 🍕",
+          doneImg: "assets/dishes/pizza-pepperoni.svg",
+          doneText: "Woodfire baked with bubbling cheese!",
+          toppings: [
+            { id: "p_mozz", name: "Fresh Mozzarella", short: "Mozzarella", price: 50, icon: "mozzarella", note: "Creamy melted fior di latte mozzarella." },
+            { id: "p_pep", name: "Spicy Cupped Pepperoni", short: "Pepperoni", price: 80, icon: "pepperoni", note: "Crispy curled spicy beef pepperoni." },
+            { id: "p_chicken", name: "BBQ Grilled Chicken", short: "BBQ Chicken", price: 70, icon: "chicken", note: "Tender seasoned chicken breast chunks." },
+            { id: "p_paneer", name: "Spiced Peri Paneer", short: "Peri Paneer", price: 60, icon: "patty-paneer", note: "Tandoori paneer cubes." },
+            { id: "p_onion", name: "Red Onion Rings", short: "Red Onions", price: 20, icon: "onion", note: "Thin sliced red onion rings." },
+            { id: "p_tomato", name: "Cherry Tomatoes", short: "Tomatoes", price: 20, icon: "tomato", note: "Sweet sun-ripened cherry tomatoes." },
+            { id: "p_olives", name: "Kalamata Black Olives", short: "Olives", price: 25, icon: "olives", note: "Pitted Mediterranean black olives." },
+            { id: "p_jalapeno", name: "Pickled Jalapeños", short: "Jalapeños", price: 20, icon: "jalapeno", note: "Spicy sliced pickled jalapeños." },
+            { id: "p_basil", name: "Fresh Sweet Basil", short: "Fresh Basil", price: 15, icon: "basil", note: "Aromatic garden sweet basil leaves." },
+            { id: "p_chilli", name: "Hot Honey & Chilli Oil", short: "Hot Honey", price: 25, icon: "hot-drizzle", note: "Sweet fiery hot honey drizzle." },
+            { id: "p_parm", name: "Aged Shaved Parmesan", short: "Parmesan", price: 30, icon: "cheddar-slice", note: "Nutty aged shaved parmesan." }
+          ]
+        },
+        grill: {
+          name: "Grill",
+          title: "🍗 Charcoal Sizzler Studio",
+          desc: "Sizzling iron platter, spiced garlic butter marinade, skewered kebabs, tandoori & wings!",
+          baseName: "Sizzler Iron Plate & Pita",
+          basePrice: 50,
+          baseImg: "assets/dishes/base-grill.svg",
+          sauceName: "Garlic Butter Marinade",
+          saucePrice: 20,
+          sauceColor: ["#fef08a", "#f59e0b", "#b45309"],
+          actionBtn: "Charcoal Sizzle 🔥",
+          doneImg: "assets/dishes/grill-tandoori.svg",
+          doneText: "Charcoal smoked and sizzling hot!",
+          toppings: [
+            { id: "g_tandoori", name: "Tandoori Chicken Leg", short: "Tandoori Leg", price: 110, icon: "tandoori-leg", note: "Charcoal flame-roasted chicken leg quarter." },
+            { id: "g_shish", name: "Shish Tawook Skewer", short: "Shish Tawook", price: 100, icon: "shish-tawook", note: "Garlic lemon skewered chicken cubes." },
+            { id: "g_seekh", name: "Spiced Seekh Kebab", short: "Seekh Kebab", price: 90, icon: "seekh-kebab", note: "Charcoal grilled minced kebab." },
+            { id: "g_wings", name: "Sticky BBQ Wings", short: "BBQ Wings", price: 70, icon: "chicken", note: "Sticky glazed crispy wings." },
+            { id: "g_paneer", name: "Charred Paneer Tikka", short: "Paneer Tikka", price: 60, icon: "patty-paneer", note: "Smoky tandoori spiced paneer." },
+            { id: "g_onion", name: "Sizzling Onions", short: "Charred Onion", price: 20, icon: "onion", note: "Caramelized sizzler bed onions." },
+            { id: "g_tomato", name: "Grilled Tomatoes", short: "Grilled Tomato", price: 20, icon: "tomato", note: "Flame-charred whole tomatoes." },
+            { id: "g_fries", name: "Peri-Peri Fries", short: "Peri Fries", price: 35, icon: "fries", note: "Spicy crisp French fries." },
+            { id: "g_chutney", name: "Spicy Mint Chutney", short: "Mint Dip", price: 15, icon: "mint-chutney", note: "Fresh coriander mint chutney." },
+            { id: "g_toum", name: "Extra Whipped Toum", short: "Extra Toum", price: 20, icon: "tahini-drizzle", note: "Pure whipped garlic dip." },
+            { id: "g_lemon", name: "Lemon & Chaat Masala", short: "Chaat Masala", price: 10, icon: "hot-drizzle", note: "Tangy lemon juice & roasted cumin." }
+          ]
+        },
+        bowl: {
+          name: "Bowl",
+          title: "🍚 Loaded Biryani Bowl Studio",
+          desc: "Artisan donburi bowl, aromatic saffron basmati rice, dump meats, eggs, raita & fresh herbs!",
+          baseName: "Saffron Basmati Rice Bowl",
+          basePrice: 60,
+          baseImg: "assets/dishes/base-bowl.svg",
+          sauceName: "Spiced Salan Gravy",
+          saucePrice: 20,
+          sauceColor: ["#fef9c3", "#facc15", "#ca8a04"],
+          actionBtn: "Garnish Bowl 🍚",
+          doneImg: "assets/dishes/bowl-biryani.svg",
+          doneText: "Steaming aromatic bowl garnished!",
+          toppings: [
+            { id: "w_shawarma", name: "Spit Shaved Chicken", short: "Shawarma Meat", price: 80, icon: "chicken", note: "Juicy shaved chicken shawarma." },
+            { id: "w_dum", name: "Dum Biryani Meat", short: "Dum Meat", price: 90, icon: "beef", note: "Slow-dum marinated aromatic meat." },
+            { id: "w_katsu", name: "Crispy Katsu Chicken", short: "Crispy Katsu", price: 70, icon: "patty-zinger", note: "Japanese panko chicken cutlet." },
+            { id: "w_falafel", name: "Crispy Falafels", short: "Falafels", price: 50, icon: "falafel", note: "Crunchy chickpea falafel balls." },
+            { id: "w_egg", name: "Boiled Spiced Egg", short: "Boiled Egg", price: 20, icon: "boiled-egg", note: "Farm fresh boiled egg half." },
+            { id: "w_onion", name: "Fried Birista Onions", short: "Birista Onion", price: 20, icon: "birista", note: "Golden crisp fried onions." },
+            { id: "w_pickles", name: "Pickled Turnips", short: "Pickles", price: 15, icon: "pickles", note: "Crunchy pickled turnip sticks." },
+            { id: "w_fries", name: "Toasted Pita Crisps", short: "Pita Crisps", price: 25, icon: "fries", note: "Crunchy toasted pita chips." },
+            { id: "w_mint", name: "Fresh Mint & Cilantro", short: "Fresh Herbs", price: 10, icon: "mint-leaves", note: "Chopped fresh mint & coriander." },
+            { id: "w_raita", name: "Cooling Mint Raita", short: "Raita", price: 20, icon: "raita", note: "Chilled spiced cucumber yogurt." },
+            { id: "w_harissa", name: "Fiery Harissa Drizzle", short: "Harissa Drizzle", price: 15, icon: "hot-drizzle", note: "Spicy red chilli harissa drizzle." }
+          ]
+        },
+        drinks: {
+          name: "Drinks",
+          title: "🥤 Drinks & Boba Studio",
+          desc: "Chilled glass with ice cubes, swirl rich syrups, blend thick shakes, top with boba pearls & scoops!",
+          baseName: "Chilled Highball Glass & Ice",
+          basePrice: 40,
+          baseImg: "assets/dishes/base-drink.svg",
+          sauceName: "Belgian Chocolate Fudge / Syrup",
+          saucePrice: 25,
+          sauceColor: ["#451a03", "#78350f", "#b45309"],
+          actionBtn: "Shake & Blend 🥤",
+          doneImg: "assets/dishes/drink-shake.svg",
+          doneText: "Ice-blended smooth and served cold with eco glass straw!",
+          toppings: [
+            { id: "d_boba", name: "Brown Sugar Boba Pearls", short: "Boba Pearls", price: 35, icon: "boba-pearls", note: "Slow-simmered chewy brown sugar tapioca pearls." },
+            { id: "d_icecream", name: "Vanilla Ice Cream Scoop", short: "Ice Cream", price: 40, icon: "ice-cream-scoop", note: "Rich vanilla bean ice cream scoop floating on top." },
+            { id: "d_cream", name: "Swirled Whipped Cream", short: "Whipped Cream", price: 30, icon: "whipped-cream", note: "Fluffy dairy whipped cream rosette." },
+            { id: "d_oreo", name: "Crushed Oreo Crumble", short: "Crushed Oreo", price: 25, icon: "crushed-oreo", note: "Crunchy dark cocoa cookie crumbles." },
+            { id: "d_lime", name: "Fresh Lime Wheel", short: "Lime Wheel", price: 15, icon: "lime-slice", note: "Fresh sliced Persian lime on the rim." },
+            { id: "d_mint", name: "Fresh Spearmint Sprigs", short: "Mint Sprigs", price: 15, icon: "mint-leaves", note: "Crisp aromatic spearmint leaves." },
+            { id: "d_mango", name: "Alphonso Mango Puree", short: "Mango Puree", price: 35, icon: "mango-pulp", note: "Luscious golden Alphonso mango nectar drizzle." },
+            { id: "d_choco", name: "Dark Chocolate Fudge", short: "Choco Fudge", price: 30, icon: "chocolate-syrup", note: "Belgian molten dark chocolate ganache swirl." }
+          ]
+        }
+      };
+
+      let currentModeKey = "shawarma";
+
+      /* ----------------------------------------------------------------
+         2. FULL KITCHEN MENU (25 ITEMS IN RUPEES ₹)
+         ---------------------------------------------------------------- */
+      const FULL_MENU = [
+        // 🌯 Shawarmas & Wraps
+        { id: "dish-shawarma-classic", cat: "shawarma", diet: "non-veg", tag: "Best Seller", name: "Classic Chicken Shawarma", price: 149, desc: "24-hr garlic spiced chicken, whipped toum garlic sauce, house pickles, fries, sumac red onions in warm Lebanese flatbread.", img: "assets/food/wrap-done.png", customizable: "shawarma" },
+        { id: "dish-beef-shawarma", cat: "shawarma", diet: "non-veg", tag: "Chef's Pick", name: "Crispy Beef Shawarma Roll", price: 189, desc: "Thin-sliced seasoned beef seared on iron, tahini drizzle, parsley sumac salad, juicy tomatoes and hot harissa dip.", img: "assets/food/wrap-done.png", customizable: "shawarma" },
+        { id: "dish-falafel-wrap", cat: "shawarma", diet: "veg", tag: "Pure Veg", name: "Crispy Green Falafel Wrap", price: 119, desc: "Fresh herb falafel patties, creamy nutty tahini, pickled pink turnip, shredded lettuce, mint and lemon drizzle.", img: "assets/dishes/wrap-falafel.svg", customizable: "shawarma" },
+        { id: "dish-kathi-roll", cat: "shawarma", diet: "veg", tag: "Pure Veg", name: "Smoky Paneer Tikka Kathi Roll", price: 139, desc: "Flaky layered paratha rolled with tandoor-roasted paneer tikka, mint coriander chutney, and bell peppers.", img: "assets/dishes/wrap-kathi.svg", customizable: "shawarma" },
+        { id: "dish-peri-chicken-wrap", cat: "shawarma", diet: "non-veg", tag: "Spicy 🌶️", name: "Peri-Peri Dynamite Chicken Wrap", price: 169, desc: "Crispy shredded chicken strips tossed in fiery peri-peri glaze, jalapeños, melted cheddar, and chipotle mayo.", img: "assets/food/wrap-done.png", customizable: "shawarma" },
+
+        // 🍔 Smash Burgers
+        { id: "dish-smash-burger", cat: "burgers", diet: "non-veg", tag: "Best Seller", name: "Double Cheese Smash Burger", price: 199, desc: "Two lacy-edged smashed beef patties, melted double American cheese, caramelized onions, dill pickles & secret burger relish on toasted brioche.", img: "assets/dishes/burger-smash.svg", customizable: "burger" },
+        { id: "dish-zinger-burger", cat: "burgers", diet: "non-veg", tag: "Chef's Pick", name: "Crispy Golden Zinger Burger", price: 179, desc: "Extra crunchy buttermilk fried chicken breast, creamy garlic slaw, pickled gherkins, and spicy peri mayo.", img: "assets/dishes/burger-zinger.svg", customizable: "burger" },
+        { id: "dish-paneer-burger", cat: "burgers", diet: "veg", tag: "Pure Veg", name: "Grilled Tandoori Paneer Burger", price: 159, desc: "Thick char-grilled cottage cheese steak marinated in yogurt spices, roasted bell pepper rings, and herbed mint cream.", img: "assets/dishes/burger-paneer.svg", customizable: "burger" },
+        { id: "dish-bbq-bacon-burger", cat: "burgers", diet: "non-veg", tag: "New", name: "Smoky BBQ Onion Crunch Burger", price: 219, desc: "Smashed beef patty glazed in hickory BBQ, crispy onion tanglers, sharp cheddar, smoked beef bacon, and garlic aioli.", img: "assets/dishes/burger-bbq-bacon.svg", customizable: "burger" },
+
+        // 🍕 Artisanal Pizzas
+        { id: "dish-pizza-margherita", cat: "pizzas", diet: "veg", tag: "Pure Veg", name: "Woodfired Margherita Pizza", price: 249, desc: "Charred Neapolitan crust, San Marzano plum tomato sauce, fior di latte fresh mozzarella medallions, fragrant basil, EVOO.", img: "assets/dishes/pizza-margherita.svg", customizable: "pizza" },
+        { id: "dish-pizza-pepperoni", cat: "pizzas", diet: "non-veg", tag: "Best Seller", name: "Spicy Cupped Pepperoni Pizza", price: 329, desc: "Smoky beef pepperoni slices cupping crisply in the oven, whole milk mozzarella, wild oregano, and hot honey drizzle.", img: "assets/dishes/pizza-pepperoni.svg", customizable: "pizza" },
+        { id: "dish-pizza-bbq-chicken", cat: "pizzas", diet: "non-veg", tag: "Chef's Pick", name: "Smoky BBQ Chicken Pizza", price: 299, desc: "Tender grilled chicken chunks, sweet smoky BBQ swirl, red onion slivers, fresh cilantro, smoked gouda & mozzarella blend.", img: "assets/dishes/pizza-bbq-chicken.svg", customizable: "pizza" },
+        { id: "dish-pizza-peri-paneer", cat: "pizzas", diet: "veg", tag: "Spicy 🌶️", name: "Peri-Peri Paneer & Jalapeño", price: 269, desc: "Spiced paneer cubes, fire-roasted sweet corn, pickled jalapeños, mozzarella and fiery peri-peri seasoning.", img: "assets/dishes/pizza-peri-paneer.svg", customizable: "pizza" },
+
+        // 🍗 Charcoal Grill & Kebabs
+        { id: "dish-grill-tandoori", cat: "grill", diet: "non-veg", tag: "Best Seller", name: "Sizzling Tandoori Charcoal Chicken", price: 269, desc: "Whole chicken leg quarter steeped in Kashmiri red chilli and roasted cumin yogurt, slow-roasted in charcoal tandoor with lime & mint dip.", img: "assets/dishes/grill-tandoori.svg", customizable: "grill" },
+        { id: "dish-grill-shish-tawook", cat: "grill", diet: "non-veg", tag: "Chef's Pick", name: "Lebanese Shish Tawook Skewers", price: 279, desc: "Skewers of lemon garlic marinated chicken breasts and grilled sweet peppers, served on warm pita with authentic toum garlic dip.", img: "assets/dishes/grill-shish-tawook.svg", customizable: "grill" },
+        { id: "dish-grill-seekh-kebab", cat: "grill", diet: "non-veg", tag: "Spicy 🌶️", name: "Charcoal Minced Seekh Kebabs", price: 239, desc: "Spiced minced meat blended with coriander seeds, ginger, green chillies and mint, flame-kissed on long skewers.", img: "assets/dishes/grill-seekh-kebab.svg", customizable: "grill" },
+        { id: "dish-grill-wings", cat: "grill", diet: "non-veg", tag: "New", name: "Sticky BBQ Glazed Wings (6pcs)", price: 189, desc: "Crispy grilled chicken wings tossed in rich molasses BBQ glaze, sprinkled with toasted white sesame seeds and celery sticks.", img: "assets/dishes/side-wings.svg", customizable: "grill" },
+
+        // 🍚 Loaded Bowls & Biryanis
+        { id: "dish-bowl-shawarma", cat: "bowls", diet: "non-veg", tag: "Best Seller", name: "Signature Shawarma Rice Bowl", price: 199, desc: "Fragrant saffron turmeric rice, generous pile of spit-carved shawarma chicken, pickled red cabbage, diced tomato-cucumber, garlic toum & harissa.", img: "assets/dishes/bowl-shawarma.svg", customizable: "bowl" },
+        { id: "dish-bowl-biryani", cat: "bowls", diet: "non-veg", tag: "Chef's Pick", name: "Royal Dum Biryani Bowl", price: 229, desc: "Long grain aromatic basmati rice layered with tender marinated meat, caramelized birista onions, saffron milk, boiled egg and cooling raita.", img: "assets/dishes/bowl-biryani.svg", customizable: "bowl" },
+        { id: "dish-bowl-katsu", cat: "bowls", diet: "non-veg", tag: "New", name: "Crispy Chicken Katsu Mayo Bowl", price: 219, desc: "Sliced golden panko-crusted chicken cutlet over warm steamed rice, Japanese kewpie mayo, sweet tonkatsu sauce, sweetcorn, and nori flakes.", img: "assets/dishes/bowl-katsu.svg", customizable: "bowl" },
+        { id: "dish-bowl-falafel", cat: "bowls", diet: "veg", tag: "Pure Veg", name: "Mediterranean Falafel Hummus Bowl", price: 179, desc: "Crispy chickpea falafels, silk-smooth hummus well with extra virgin olive oil, Kalamata olives, tabbouleh salad and warm pita wedges.", img: "assets/dishes/side-hummus.svg", customizable: "bowl" },
+
+        // 🥤 Drinks & Coolers (Fully customizable in live studio!)
+        { id: "dish-drink-shake", cat: "drinks", diet: "veg", tag: "Must Try", name: "Belgian Dark Chocolate Thickshake", price: 149, desc: "Real Belgian chocolate ganache blended with creamy vanilla soft serve, topped with whipped cream and chocolate curl.", img: "assets/dishes/drink-shake.svg", customizable: "drinks" },
+        { id: "dish-drink-mojito", cat: "drinks", diet: "veg", tag: "Refreshing", name: "Sparkling Mint Lime Mojito", price: 99, desc: "Muddled fresh garden mint leaves, Persian lime wedges, cane sugar, sparkling soda and heaps of crushed crystal ice.", img: "assets/dishes/drink-mojito.svg", customizable: "drinks" },
+        { id: "dish-drink-boba", cat: "drinks", diet: "veg", tag: "Special", name: "Brown Sugar Tiger Boba Milk Tea", price: 159, desc: "Taiwanese black tea infused with caramelized brown sugar stripes, fresh creamy milk, and slow-cooked chewy tapioca pearls.", img: "assets/dishes/drink-shake.svg", customizable: "drinks" },
+        { id: "dish-drink-karak", cat: "drinks", diet: "veg", tag: "Hot Drink", name: "Authentic Cardamom Karak Chai", price: 49, desc: "Slow-simmered strong black tea leaves brewed with evaporated milk, crushed green cardamom pods, and saffron strands.", img: "assets/dishes/drink-karak.svg", customizable: "drinks" },
+
+        // 🍟 Sides & Fries
+        { id: "dish-side-fries", cat: "sides", diet: "veg", tag: "Best Seller", name: "Loaded Cheesy Peri-Peri Fries", price: 119, desc: "Double-fried golden potato fries dusted with spicy peri-peri rub, drenched in warm cheddar cheese sauce and fresh parsley.", img: "assets/dishes/side-fries.svg" },
+        { id: "dish-side-hummus", cat: "sides", diet: "veg", tag: "Pure Veg", name: "Creamy Hummus with Warm Pita", price: 139, desc: "Slow-ground chickpeas with sesame tahini, lemon juice, extra virgin olive oil, smoked paprika, and two toasted pita breads.", img: "assets/dishes/side-hummus.svg" }
+      ];
+
+      /* ----------------------------------------------------------------
+         3. UNIFIED ORDER CART & STATE
+         ---------------------------------------------------------------- */
+      const order = new Map();
+      const lines = $("#lines");
+      let shown = 0, tick = null;
+      let orderNo = 42;
+
+      function sum() {
+        let t = 0;
+        order.forEach(v => t += v.price * (v.qty || 1));
+        return t;
+      }
+
+      function totalItemCount() {
+        let c = 0;
+        order.forEach(v => c += (v.qty || 1));
+        return c;
+      }
+
+      function renderTotal() {
+        const target = sum();
+        const from = shown;
+        const t0 = performance.now();
+        cancelAnimationFrame(tick);
+        const run = now => {
+          const k = Math.min(1, (now - t0) / 450);
+          shown = from + (target - from) * k;
+          $("#total").textContent = inr(shown);
+          if (k < 1) tick = requestAnimationFrame(run);
+        };
+        if (reduce) {
+          shown = target;
+          $("#total").textContent = inr(target);
+        } else tick = requestAnimationFrame(run);
+
+        $("#cartBadge").textContent = totalItemCount();
+      }
+
+      function note(k, title, text) {
+        const n = $("#now");
+        n.innerHTML = `<div class="k">${k === "Chef's studio" ? k : "Added · " + k}</div><h4>${title}</h4><p>${text}</p>`;
+        n.classList.remove("pop");
+        void n.offsetWidth;
+        n.classList.add("pop");
+      }
+
+      function syncReceiptLines() {
+        lines.innerHTML = "";
+        order.forEach((v, id) => {
+          const li = document.createElement("li");
+          li.dataset.id = id;
+          const qtyText = v.qty > 1 ? ` <b style="color:var(--primary)">(x${v.qty})</b>` : "";
+          li.innerHTML = `
+      <span>${v.name}${qtyText}</span>
+      <i></i>
+      <em>${inr(v.price * (v.qty || 1))}</em>
+      <button class="del-btn" onclick="window.removeOrderItem('${id}')" title="Remove">✕</button>
+    `;
+          lines.appendChild(li);
+        });
+        lines.scrollTop = lines.scrollHeight;
+        renderTotal();
+      }
+
+      window.addMenuDish = function (dishId) {
+        const dish = FULL_MENU.find(d => d.id === dishId);
+        if (!dish) return;
+        const existing = order.get(dishId);
+        if (existing) existing.qty += 1;
+        else order.set(dishId, { name: dish.name, price: dish.price, qty: 1 });
+        syncReceiptLines();
+        renderMenuGrid();
+        note("Menu Item", dish.name, "Added to your pickup slip.");
+        showToast(`Added ${dish.name} (₹${dish.price})`);
+      };
+
+      window.changeMenuQty = function (dishId, delta) {
+        const existing = order.get(dishId);
+        if (!existing) return;
+        existing.qty += delta;
+        if (existing.qty <= 0) order.delete(dishId);
+        syncReceiptLines();
+        renderMenuGrid();
+      };
+
+      window.removeOrderItem = function (id) {
+        order.delete(id);
+        if (onTop.has(id)) {
+          onTop.delete(id);
+          mark(id, false);
+          const layer = $("#L-" + id);
+          if (layer) layer.innerHTML = "";
+        }
+        syncReceiptLines();
+        renderMenuGrid();
+        note("Chef's studio", "Item removed", "Updated your order slip.");
+      };
+
+      /* ----------------------------------------------------------------
+         4. DYNAMIC STUDIO STATION SWITCHING
+         ---------------------------------------------------------------- */
+      const baseImg = $("#baseImg");
+      const foldL = $("#foldL");
+      const foldR = $("#foldR");
+      const rolledImg = $("#rolledImg");
+      const rollBtn = $("#rollBtn");
+      const shelf = $("#shelf");
+      const topsContainer = $("#topsContainer");
+      const studioTitle = $("#studioTitle");
+      const studioDesc = $("#studioDesc");
+      const meterLabel = $("#meterLabel");
+
+      const onTop = new Set();
+      let ready = false, serving = false, rolled = false, rolling = false;
+
+      function setStudioMode(modeKey) {
+        if (serving || rolling) return;
+        currentModeKey = modeKey;
+        const m = STUDIO_MODES[modeKey];
+        if (!m) return;
+
+        // Update tabs UI
+        $$(".station-btn").forEach(b => {
+          b.classList.toggle("active", b.dataset.mode === modeKey);
+        });
+
+        // Update headers
+        studioTitle.innerHTML = m.title;
+        studioDesc.textContent = m.desc;
+        meterLabel.textContent = m.sauceName.split(" ")[0] + " Sauced";
+        rollBtn.textContent = m.actionBtn;
+
+        // Dynamic station tags
+        if (modeKey === 'drinks') {
+          $("#spatTag").textContent = "drag syrup across glass ↘";
+          $("#spitTag").textContent = "tap for ice & boba ↓";
+        } else if (modeKey === 'pizza') {
+          $("#spatTag").textContent = "spread marinara across dough ↘";
+          $("#spitTag").textContent = "tap for chicken chunks ↓";
+        } else if (modeKey === 'burger') {
+          $("#spatTag").textContent = "spread burger relish ↘";
+          $("#spitTag").textContent = "tap to sear patty ↓";
+        } else if (modeKey === 'grill') {
+          $("#spatTag").textContent = "baste garlic butter ↘";
+          $("#spitTag").textContent = "tap for tandoori leg ↓";
+        } else if (modeKey === 'bowl') {
+          $("#spatTag").textContent = "ladle spiced salan ↘";
+          $("#spitTag").textContent = "tap for dum meat ↓";
+        } else {
+          $("#spatTag").textContent = "drag spatula across base ↘";
+          $("#spitTag").textContent = "tap to carve meat ↓";
+        }
+
+        // Change base visuals
+        baseImg.src = m.baseImg;
+        foldL.src = m.baseImg;
+        foldR.src = m.baseImg;
+        rolledImg.src = m.doneImg;
+
+        // Reset current station elements
+        resetStudio(false);
+
+        // Repopulate Shelf & Tops
+        populateShelfAndTops(m);
+
+        // Drop base onto board
+        setTimeout(dropBread, 200);
+      }
+
+      // Station Buttons click handlers
+      $$(".station-btn").forEach(b => {
+        b.addEventListener("click", () => {
+          setStudioMode(b.dataset.mode);
+        });
+      });
+
+      window.loadStudioBuilder = function (modeKey) {
+        if (STUDIO_MODES[modeKey]) {
+          setStudioMode(modeKey);
+        }
+        $("#studio").scrollIntoView({ behavior: "smooth", block: "start" });
+        showToast(`Loaded ${STUDIO_MODES[modeKey || 'shawarma'].title}!`);
+      };
+
+      /* ----------------------------------------------------------------
+         5. POPULATE DYNAMIC TOPPINGS SHELF & TOPPING ART
+         ---------------------------------------------------------------- */
+      const SVG_ASSET_SET = new Set([
+        "cheddar-slice", "patty-beef", "patty-zinger", "patty-paneer",
+        "mozzarella", "pepperoni", "olives", "jalapeno", "basil",
+        "boiled-egg", "birista", "tandoori-leg", "shish-tawook", "seekh-kebab",
+        "mint-chutney", "raita", "boba-pearls", "ice-cream-scoop", "whipped-cream",
+        "crushed-oreo", "lime-slice", "mint-leaves", "mango-pulp", "chocolate-syrup"
+      ]);
+
+      function getFoodAssetUrl(iconName) {
+        if (!iconName) return "assets/food/lettuce.png";
+        if (iconName.includes(".")) return `assets/food/${iconName}`;
+        const ext = SVG_ASSET_SET.has(iconName) ? ".svg" : ".png";
+        return `assets/food/${iconName}${ext}`;
+      }
+
+      const TOPPING_ART_MAP = {
+        // Shawarma
+        chicken: g => { putPiece(g, "chicken", 92, 80, 74, 0); putPiece(g, "chicken", 108, 124, 72, 40, .12); },
+        beef: g => { putPiece(g, "beef", 110, 92, 72, -20); putPiece(g, "beef", 88, 128, 64, 25, .12); },
+        falafel: g => { putPiece(g, "falafel", 128, 112, 46, 0); putPiece(g, "falafel", 74, 104, 42, 60, .1); },
+        lettuce: g => { putPiece(g, "lettuce", 100, 66, 78, 0); putPiece(g, "lettuce", 100, 132, 78, 50, .1); },
+        tomato: g => { putPiece(g, "tomato", 84, 96, 60, -20); putPiece(g, "tomato", 118, 120, 56, 30, .1); },
+        pickles: g => { putPiece(g, "pickles", 70, 82, 40, 20); putPiece(g, "pickles", 130, 140, 40, -10, .1); },
+        onion: g => { putPiece(g, "onion", 126, 74, 52, 10); putPiece(g, "onion", 74, 134, 50, -30, .1); },
+        fries: g => { putPiece(g, "fries", 94, 104, 64, -30); putPiece(g, "fries", 112, 60, 44, 20, .1); },
+        parsley: g => { putPiece(g, "parsley", 96, 146, 46, 0); putPiece(g, "parsley", 104, 56, 38, 90, .1); },
+        hot: g => drizzleSauce(g, "hot-drizzle", 80),
+        tahini: g => drizzleSauce(g, "tahini-drizzle", 100),
+
+        // Burger
+        "patty-beef": g => putPiece(g, "patty-beef", 100, 100, 110, 0),
+        "patty-zinger": g => putPiece(g, "patty-zinger", 100, 100, 105, -5),
+        "patty-paneer": g => putPiece(g, "patty-paneer", 100, 100, 95, 10),
+        "cheddar-slice": g => putPiece(g, "cheddar-slice", 100, 100, 110, 45),
+
+        // Pizza
+        "mozzarella": g => { putPiece(g, "mozzarella", 75, 80, 52, 0); putPiece(g, "mozzarella", 125, 95, 54, 20); putPiece(g, "mozzarella", 95, 130, 50, -15); },
+        "pepperoni": g => { putPiece(g, "pepperoni", 68, 72, 44, 15); putPiece(g, "pepperoni", 128, 76, 44, -20); putPiece(g, "pepperoni", 78, 128, 44, 30); putPiece(g, "pepperoni", 122, 124, 44, -10); },
+        "olives": g => { putPiece(g, "olives", 85, 65, 34, 10); putPiece(g, "olives", 130, 105, 34, -40); putPiece(g, "olives", 80, 135, 34, 25); },
+        "jalapeno": g => { putPiece(g, "jalapeno", 110, 65, 34, -20); putPiece(g, "jalapeno", 65, 105, 34, 30); putPiece(g, "jalapeno", 115, 135, 34, -10); },
+        "basil": g => { putPiece(g, "basil", 95, 75, 36, -30); putPiece(g, "basil", 115, 115, 36, 40); putPiece(g, "basil", 75, 115, 34, -10); },
+
+        // Grill
+        "tandoori-leg": g => putPiece(g, "tandoori-leg", 100, 100, 115, -15),
+        "shish-tawook": g => { putPiece(g, "shish-tawook", 90, 85, 105, 12); putPiece(g, "shish-tawook", 110, 115, 105, -8); },
+        "seekh-kebab": g => { putPiece(g, "seekh-kebab", 90, 85, 110, 20); putPiece(g, "seekh-kebab", 110, 115, 110, 20); },
+        "mint-chutney": g => drizzleSauce(g, "mint-chutney", 45),
+
+        // Bowls
+        "boiled-egg": g => { putPiece(g, "boiled-egg", 75, 90, 48, -25); putPiece(g, "boiled-egg", 125, 115, 48, 30); },
+        "birista": g => { putPiece(g, "birista", 100, 75, 60, 0); putPiece(g, "birista", 100, 125, 60, 180); },
+        "raita": g => drizzleSauce(g, "raita", -30),
+        "mint-leaves": g => { putPiece(g, "mint-leaves", 100, 65, 42, -15); putPiece(g, "mint-leaves", 100, 135, 42, 25); },
+
+        // Drinks
+        "boba-pearls": g => { putPiece(g, "boba-pearls", 100, 135, 95, 0); putPiece(g, "boba-pearls", 100, 105, 85, 180); },
+        "ice-cream-scoop": g => putPiece(g, "ice-cream-scoop", 100, 78, 86, 0),
+        "whipped-cream": g => putPiece(g, "whipped-cream", 100, 68, 92, 0),
+        "crushed-oreo": g => putPiece(g, "crushed-oreo", 100, 60, 75, 0),
+        "lime-slice": g => putPiece(g, "lime-slice", 132, 65, 52, 25),
+        "mango-pulp": g => drizzleSauce(g, "mango-pulp", 60),
+        "chocolate-syrup": g => drizzleSauce(g, "chocolate-syrup", -45)
+      };
+
+      function putPiece(g, file, x, y, w, r = 0, d = 0) {
+        const s = document.createElement("span");
+        s.className = "pc";
+        s.style.cssText = `left:${x / 2}%;top:${y / 2}%;width:${w / 2}%;--r:${r}deg`;
+        s.innerHTML = `<img class="piece" style="--d:${d}s" src="${getFoodAssetUrl(file)}" alt="">`;
+        g.appendChild(s);
+      }
+
+      function drizzleSauce(g, file, rot) {
+        const s = document.createElement("span");
+        s.className = "pc drizzle";
+        s.style.cssText = `left:50%;top:50%;width:50%;--r:${rot}deg`;
+        s.innerHTML = `<img src="${getFoodAssetUrl(file)}" alt="">`;
+        g.appendChild(s);
+      }
+
+      function populateShelfAndTops(modeObj) {
+        const isDrink = currentModeKey === "drinks";
+        shelf.innerHTML = `<span class="hud-tag" id="shelfTag">${isDrink ? "tap ingredients to blend in your glass ↓" : "tap or drag ingredients onto dish ↓"}</span>`;
+        topsContainer.innerHTML = "";
+
+        modeObj.toppings.forEach(t => {
+          // 1. Shelf Button
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "top";
+          b.dataset.id = t.id;
+          b.setAttribute("aria-label", `${t.name}, ${inr(t.price)}`);
+          b.innerHTML = `<img src="${getFoodAssetUrl(t.icon)}" alt="${t.name}"><b>${t.short}</b><small>${inr(t.price)}</small>`;
+          shelf.appendChild(b);
+
+          // 2. Layer Div
+          const layer = document.createElement("div");
+          layer.id = "L-" + t.id;
+          topsContainer.appendChild(layer);
+        });
+      }
+
+      function mark(id, on) {
+        shelf.querySelector(`[data-id="${id}"]`)?.classList.toggle("on", on);
+      }
+
+      function applyTopping(id) {
+        if (!ready || serving || rolling) return;
+        if (rolled) { note("Chef's studio", "Dish is complete!", "Click Reset or checkout to craft another."); hopRolled(); return; }
+
+        const m = STUDIO_MODES[currentModeKey];
+        const item = m.toppings.find(t => t.id === id);
+        if (!item) return;
+
+        // Toggle: If already on dish, clicking again removes it!
+        if (onTop.has(id)) {
+          onTop.delete(id);
+          mark(id, false);
+          const layer = $("#L-" + id);
+          if (layer) layer.innerHTML = "";
+          order.delete(id);
+          syncReceiptLines();
+          note("Chef's studio", `Removed ${item.name}`, "Removed from your dish.");
+          showToast(`Removed ${item.name}`);
+          cleanupGhosts();
+          return;
+        }
+
+        const layer = $("#L-" + id);
+        if (layer) {
+          layer.parentNode.appendChild(layer);
+          const artFn = TOPPING_ART_MAP[item.icon] || TOPPING_ART_MAP[id] || (g => putPiece(g, item.icon, 100, 100, 60, 0));
+          artFn(layer);
+        }
+
+        onTop.add(id);
+        mark(id, true);
+        order.set(id, { name: `${m.name.split(" ")[0]}: ${item.name}`, price: item.price, qty: 1 });
+        syncReceiptLines();
+        note(item.name, item.name, item.note);
+        $("#shelfTag").classList.add("hide");
+
+        // Animate particle flying into dish
+        const btn = shelf.querySelector(`[data-id="${id}"]`);
+        if (btn) {
+          flyIngredientToDish(btn, item.icon);
+        }
+      }
+
+      /* ----------------------------------------------------------------
+         6. SAUCE CANVAS (ADAPTS COLOR TO SAUCE TYPE)
+         ---------------------------------------------------------------- */
+      const crumbPath = new Path2D();
+      crumbPath.arc(100, 100, 82, 0, Math.PI * 2);
+      const inBread = (x, y) => (x - 100) ** 2 + (y - 100) ** 2 < 82 * 82;
+
+      const bread = $("#bread");
+      const cv = $("#sauce");
+      const ctx = cv.getContext("2d");
+      const mask = document.createElement("canvas");
+      const mctx = mask.getContext("2d");
+      let S = 1, saucePat = null;
+      const G = 36, cells = [], covered = new Set();
+      for (let gy = 0; gy < G; gy++) {
+        for (let gx = 0; gx < G; gx++) {
+          const x = (gx + .5) * 200 / G, y = (gy + .5) * 200 / G;
+          if (inBread(x, y)) cells.push([x, y, gy * G + gx]);
+        }
+      }
+      const totalCells = cells.length;
+
+      function sizeCanvas() {
+        const r = bread.getBoundingClientRect();
+        const dpr = Math.min(2, devicePixelRatio || 1);
+        const px = Math.round(r.width * dpr);
+        if (!px) return;
+        cv.width = cv.height = mask.width = mask.height = px;
+        S = px / 200;
+
+        const mode = STUDIO_MODES[currentModeKey];
+        const t = document.createElement("canvas");
+        t.width = t.height = px;
+        const tc = t.getContext("2d");
+        const g = tc.createLinearGradient(0, 0, px, px);
+        const c = mode.sauceColor || ["#fffef8", "#f6f1e2", "#ece4cc"];
+        g.addColorStop(0, c[0]);
+        g.addColorStop(.5, c[1]);
+        g.addColorStop(1, c[2]);
+        tc.fillStyle = g;
+        tc.fillRect(0, 0, px, px);
+        tc.globalAlpha = .5;
+        tc.strokeStyle = "#ffffff";
+        tc.lineCap = "round";
+        for (let i = 0; i < 40; i++) {
+          tc.lineWidth = (1 + Math.random() * 3) * S;
+          const x = Math.random() * px, y = Math.random() * px, l = (10 + Math.random() * 25) * S;
+          tc.beginPath();
+          tc.moveTo(x, y);
+          tc.lineTo(x + l, y - l * .2);
+          tc.stroke();
+        }
+        saucePat = t;
+        renderSauce();
+      }
+
+      function renderSauce() {
+        if (!saucePat) return;
+        const px = cv.width;
+        ctx.clearRect(0, 0, px, px);
+        ctx.drawImage(mask, 0, 0);
+        ctx.globalCompositeOperation = "source-in";
+        ctx.drawImage(saucePat, 0, 0);
+        ctx.globalCompositeOperation = "source-over";
+      }
+
+      let lastP = null;
+      function dab(x, y) {
+        mctx.save();
+        mctx.setTransform(S, 0, 0, S, 0, 0);
+        mctx.clip(crumbPath);
+        const r = 14, g = mctx.createRadialGradient(x, y, 0, x, y, r);
+        g.addColorStop(0, "rgba(0,0,0,.6)");
+        g.addColorStop(.7, "rgba(0,0,0,.32)");
+        g.addColorStop(1, "rgba(0,0,0,0)");
+        mctx.fillStyle = g;
+        mctx.beginPath();
+        mctx.ellipse(x, y, r, r * .7, -.3, 0, 7);
+        mctx.fill();
+        mctx.restore();
+        for (const c of cells) {
+          if (!covered.has(c[2]) && (c[0] - x) ** 2 + (c[1] - y) ** 2 < 110) {
+            covered.add(c[2]);
+          }
+        }
+      }
+
+      function smearTo(x, y) {
+        if (lastP) {
+          const dx = x - lastP[0], dy = y - lastP[1];
+          const n = Math.max(1, Math.ceil(Math.hypot(dx, dy) / 2.5));
+          for (let i = 1; i <= n; i++) dab(lastP[0] + dx * i / n, lastP[1] + dy * i / n);
+        } else dab(x, y);
+        lastP = [x, y];
+        renderSauce();
+        updateMeter();
+      }
+
+      let sauced = false;
+      function updateMeter() {
+        const p = Math.min(100, Math.round(covered.size / totalCells * 112));
+        $("#mbar").style.width = p + "%";
+        $("#mpct").textContent = p + "%";
+        if (p >= 50 && !sauced) {
+          sauced = true;
+          const m = STUDIO_MODES[currentModeKey];
+          order.set(`sauce_${currentModeKey}`, { name: `${m.name.split(" ")[0]}: ${m.sauceName}`, price: m.saucePrice, qty: 1 });
+          syncReceiptLines();
+          note(m.sauceName, m.sauceName, "Spread across the base! Now pile on ingredients.");
+        }
+      }
+
+      function clearSauce() {
+        mctx.clearRect(0, 0, mask.width, mask.height);
+        covered.clear();
+        sauced = false;
+        renderSauce();
+        updateMeter();
+      }
+
+      /* ----------------------------------------------------------------
+         7. SPATULA DRAGGING & AUTO-SPREAD
+         ---------------------------------------------------------------- */
+      const spat = $("#spat"), tip = $("#tip");
+      let kd = null, moved = 0;
+      const setSpat = (dx, dy, rot = 0) => spat.style.transform = `translate(${dx}px,${dy}px) rotate(${rot}deg)`;
+
+      function tipToBread() {
+        const t = tip.getBoundingClientRect(), r = bread.getBoundingClientRect();
+        return [(t.left - r.left) / r.width * 200, (t.top - r.top) / r.height * 200];
+      }
+
+      spat.addEventListener("pointerdown", e => {
+        if (serving || autoRun) return;
+        e.preventDefault();
+        spat.setPointerCapture(e.pointerId);
+        spat.classList.remove("home");
+        spat.classList.add("drag");
+        kd = { x: e.clientX, y: e.clientY };
+        moved = 0;
+        lastP = null;
+        $("#spatTag").classList.add("hide");
+      });
+
+      spat.addEventListener("pointermove", e => {
+        if (!kd) return;
+        const dx = e.clientX - kd.x, dy = e.clientY - kd.y;
+        moved = Math.max(moved, Math.hypot(dx, dy));
+        setSpat(dx, dy, -6);
+        if (!ready || rolled) return;
+        const [x, y] = tipToBread();
+        if (inBread(x, y)) smearTo(x, y);
+        else lastP = null;
+      });
+
+      const spatUp = () => {
+        if (!kd) return;
+        kd = null;
+        spat.classList.remove("drag");
+        spat.classList.add("home");
+        setSpat(0, 0);
+        if (moved < 6) autoSauce();
+      };
+      spat.addEventListener("pointerup", spatUp);
+      spat.addEventListener("pointercancel", spatUp);
+
+      let autoRun = false;
+      function autoSauce() {
+        if (autoRun || !ready || serving) return;
+        if (rolled) return;
+        autoRun = true;
+        $("#spatTag").classList.add("hide");
+        spat.classList.remove("home");
+        const tr = tip.getBoundingClientRect(), home = [tr.left, tr.top];
+        const pts = [];
+        for (let row = 0; row < 7; row++) {
+          const y = 40 + row * 20, h = Math.sqrt(Math.max(0, 78 * 78 - (y - 100) ** 2));
+          const a = row % 2 ? [100 + h, 100 - h] : [100 - h, 100 + h];
+          pts.push([a[0], y], [a[1], y + 8]);
+        }
+        const r = bread.getBoundingClientRect();
+        const toScr = p => [r.left + p[0] / 200 * r.width, r.top + p[1] / 200 * r.height];
+        const start = toScr(pts[0]);
+        const dur = reduce ? 200 : 2000;
+        let t0 = null;
+        lastP = null;
+
+        spat.style.transition = "transform .4s ease";
+        setSpat(start[0] - home[0], start[1] - home[1], -6);
+        setTimeout(() => {
+          spat.style.transition = "none";
+          const step = ts => {
+            if (!t0) t0 = ts;
+            const k = Math.min(1, (ts - t0) / dur);
+            const f = k * (pts.length - 1);
+            const i = Math.min(pts.length - 2, Math.floor(f));
+            const u = f - i;
+            const p = [pts[i][0] + (pts[i + 1][0] - pts[i][0]) * u, pts[i][1] + (pts[i + 1][1] - pts[i][1]) * u];
+            if (inBread(p[0], p[1])) smearTo(p[0], p[1]);
+            else lastP = null;
+            const s = toScr(p);
+            setSpat(s[0] - home[0], s[1] - home[1], -6);
+            if (k < 1) requestAnimationFrame(step);
+            else {
+              spat.style.transition = "";
+              spat.classList.add("home");
+              setSpat(0, 0);
+              autoRun = false;
+              if (!sauced) {
+                cells.forEach(c => covered.add(c[2]));
+                updateMeter();
+              }
+            }
+          };
+          requestAnimationFrame(step);
+        }, 420);
+      }
+
+      /* ----------------------------------------------------------------
+         8. ROTATING SPIT / HEAT CARVE
+         ---------------------------------------------------------------- */
+      const spit = $("#spit");
+      let carving = false;
+
+      function carveSpit() {
+        if (!ready || serving || rolling || carving) return;
+        if (rolled) return;
+        $("#spitTag").classList.add("hide");
+
+        const m = STUDIO_MODES[currentModeKey];
+        // Select main protein
+        const mainProtein = m.toppings[0];
+        if (!mainProtein) return;
+
+        if (onTop.has(mainProtein.id)) {
+          applyTopping(mainProtein.id);
+          return;
+        }
+        carving = true;
+        spit.classList.remove("cut");
+        void spit.offsetWidth;
+        spit.classList.add("cut");
+
+        const a = spit.getBoundingClientRect(), b = bread.getBoundingClientRect();
+        const from = [a.left + a.width * .45, a.top + a.height * .45];
+        const to = [b.left + b.width / 2, b.top + b.height / 2];
+
+        for (let i = 0; i < 6; i++) {
+          const s = document.createElement("img");
+          s.className = "shaving";
+          s.src = getFoodAssetUrl(mainProtein.icon);
+          s.alt = "";
+          document.body.appendChild(s);
+          const ox = (Math.random() - .5) * 60, oy = (Math.random() - .5) * 60;
+          const peak = Math.min(from[1], to[1]) - 90 - Math.random() * 60;
+          s.animate([
+            { transform: `translate(${from[0] - 22}px,${from[1] - 22 + i * 8}px) scale(.4) rotate(0deg)`, opacity: 0 },
+            { transform: `translate(${(from[0] + to[0]) / 2 - 22}px,${peak}px) scale(.8) rotate(${180 + i * 40}deg)`, opacity: 1, offset: .5 },
+            { transform: `translate(${to[0] - 22 + ox}px,${to[1] - 22 + oy}px) scale(.9) rotate(${360 + i * 60}deg)`, opacity: .9 }
+          ], {
+            duration: reduce ? 1 : 800,
+            delay: reduce ? 0 : 300 + i * 90,
+            easing: "cubic-bezier(0.3, 0, 0.4, 1)",
+            fill: "both"
+          }).onfinish = () => s.remove();
+        }
+        setTimeout(() => {
+          carving = false;
+          applyTopping(mainProtein.id);
+        }, reduce ? 10 : 1300);
+      }
+      spit.addEventListener("click", carveSpit);
+
+      /* ----------------------------------------------------------------
+         9. TOPPINGS SELECTION & CLEAN DRAG / CLICK
+         ---------------------------------------------------------------- */
+      let gh = null, gid = null, gs = null;
+      let draggedFar = false;
+
+      function cleanupGhosts() {
+        $$(".ghost, .flight-particle").forEach(el => el.remove());
+        gh = null;
+      }
+
+      function flyIngredientToDish(fromEl, iconFile) {
+        cleanupGhosts();
+        if (!fromEl || !bread) return;
+
+        const flyer = document.createElement("div");
+        flyer.className = "ghost flight-particle";
+        flyer.innerHTML = `<img src="${getFoodAssetUrl(iconFile)}" alt="">`;
+        document.body.appendChild(flyer);
+
+        // Unconditional emergency garbage collection
+        const safetyTimer = setTimeout(() => {
+          flyer.remove();
+        }, 420);
+
+        try {
+          const fromRect = fromEl.getBoundingClientRect();
+          const toRect = bread.getBoundingClientRect();
+
+          const startX = fromRect.left + fromRect.width / 2 - 37;
+          const startY = fromRect.top - 10;
+          const endX = toRect.left + toRect.width / 2 - 37 + (Math.random() - .5) * 40;
+          const endY = toRect.top + toRect.height / 2 - 37 + (Math.random() - .5) * 40;
+
+          flyer.style.transform = `translate(${startX}px, ${startY}px) scale(0.9)`;
+          flyer.style.opacity = "1";
+
+          const anim = flyer.animate([
+            { transform: `translate(${startX}px, ${startY}px) scale(0.85)`, opacity: 0.95 },
+            { transform: `translate(${(startX + endX) / 2}px, ${Math.min(startY, endY) - 40}px) scale(1.15)`, opacity: 1, offset: 0.45 },
+            { transform: `translate(${endX}px, ${endY}px) scale(0.7)`, opacity: 0 }
+          ], {
+            duration: reduce ? 50 : 350,
+            easing: "cubic-bezier(0.2, 1, 0.4, 1)",
+            fill: "none"
+          });
+
+          anim.onfinish = () => {
+            clearTimeout(safetyTimer);
+            flyer.remove();
+          };
+          anim.oncancel = () => {
+            clearTimeout(safetyTimer);
+            flyer.remove();
+          };
+        } catch (err) {
+          clearTimeout(safetyTimer);
+          flyer.remove();
+        }
+      }
+
+      // Shelf Click (Instant & 100% reliable)
+      shelf.addEventListener("click", e => {
+        const b = e.target.closest(".top");
+        if (!b) return;
+        if (draggedFar) {
+          draggedFar = false;
+          return;
+        }
+        applyTopping(b.dataset.id);
+      });
+
+      shelf.addEventListener("pointerdown", e => {
+        const b = e.target.closest(".top");
+        if (!b) return;
+        gid = b.dataset.id;
+        gs = { x: e.clientX, y: e.clientY, b };
+        draggedFar = false;
+        cleanupGhosts();
+      });
+
+      window.addEventListener("pointermove", e => {
+        if (!gs) return;
+        const d = Math.hypot(e.clientX - gs.x, e.clientY - gs.y);
+        if (d > 24) draggedFar = true;
+
+        const m = STUDIO_MODES[currentModeKey];
+        const item = m.toppings.find(t => t.id === gid);
+        if (!gh && d > 24 && item) {
+          gh = document.createElement("div");
+          gh.className = "ghost";
+          gh.innerHTML = `<img src="${getFoodAssetUrl(item.icon)}" alt="">`;
+          document.body.appendChild(gh);
+        }
+        if (gh) {
+          gh.style.transform = `translate(${e.clientX - 37}px,${e.clientY - 37}px) rotate(${Math.max(-20, Math.min(20, (e.clientX - gs.x) / 12))}deg) scale(1.1)`;
+          bread.classList.toggle("hover", overBread(e.clientX, e.clientY));
+        }
+      });
+
+      function overBread(x, y) {
+        const r = $("#board").getBoundingClientRect(), m = r.width * .05;
+        return x > r.left - m && x < r.right + m && y > r.top - m && y < r.bottom + m;
+      }
+
+      const windowUp = e => {
+        bread.classList.remove("hover");
+        if (gh) {
+          const hit = overBread(e.clientX, e.clientY);
+          const targetGid = gid;
+          const g = gh;
+          gh = null;
+          g.remove();
+          if (hit && targetGid) {
+            applyTopping(targetGid);
+          }
+        }
+        cleanupGhosts();
+        gs = null;
+        gid = null;
+      };
+      window.addEventListener("pointerup", windowUp);
+      window.addEventListener("pointercancel", windowUp);
+      window.addEventListener("blur", cleanupGhosts);
+
+      shelf.addEventListener("keydown", e => {
+        const b = e.target.closest(".top");
+        if (b && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          applyTopping(b.dataset.id);
+        }
+      });
+
+      /* ----------------------------------------------------------------
+         10. ROLL / FINISH ANIMATION & RESET
+         ---------------------------------------------------------------- */
+      const rolledEl = $("#rolled");
+
+      function dropBread() {
+        bread.classList.remove("out");
+        bread.animate([
+          { transform: "translateY(-120%) rotate(-200deg) scale(.5)", opacity: 0 },
+          { transform: "translateY(6%) rotate(8deg) scale(1.02)", opacity: 1, offset: .75 },
+          { transform: "none", opacity: 1 }
+        ], {
+          duration: reduce ? 1 : 900,
+          easing: "cubic-bezier(.4,0,.3,1)"
+        }).onfinish = () => {
+          ready = true;
+          const m = STUDIO_MODES[currentModeKey];
+          order.set(`base_${currentModeKey}`, { name: `${m.name.split(" ")[0]}: ${m.baseName}`, price: m.basePrice, qty: 1 });
+          syncReceiptLines();
+          note("Chef's studio", m.baseName, "Warmed on griddle. Drag or tap spatula to add sauce.");
+        };
+      }
+
+      function hopRolled() {
+        rolledEl.classList.remove("hop");
+        void rolledEl.offsetWidth;
+        rolledEl.classList.add("hop");
+      }
+
+      function finishDish(then) {
+        if (!ready || serving || rolling) return;
+        if (rolled) { then && then(); return; }
+
+        const m = STUDIO_MODES[currentModeKey];
+        rolling = true;
+        bread.classList.add("folding");
+
+        setTimeout(() => {
+          bread.animate([
+            { transform: "none", opacity: 1 },
+            { transform: "rotate(-24deg) scaleX(.6)", opacity: 0 }
+          ], { duration: reduce ? 1 : 380, easing: "ease-in", fill: "forwards" });
+
+          rolledEl.classList.add("show");
+          $("#board").classList.add("done");
+
+          setTimeout(() => {
+            rolling = false;
+            rolled = true;
+            rollBtn.textContent = "Checkout →";
+            note("Chef's studio", `${m.name.split(" ")[0]} Ready!`, m.doneText);
+            then && setTimeout(then, reduce ? 0 : 500);
+          }, reduce ? 10 : 450);
+        }, reduce ? 20 : 900);
+      }
+
+      rollBtn.addEventListener("click", () => {
+        if (rolled) openCheckout();
+        else finishDish();
+      });
+
+      function resetStudio(clearBaseOrder = true) {
+        rolledEl.className = "rolled";
+        $("#board").classList.remove("done");
+        bread.getAnimations().forEach(a => a.cancel());
+        bread.classList.remove("folding");
+        bread.classList.add("out");
+        rolled = false;
+        ready = false;
+        const m = STUDIO_MODES[currentModeKey];
+        rollBtn.textContent = m.actionBtn;
+        onTop.clear();
+        topsContainer.querySelectorAll("div").forEach(g => g.innerHTML = "");
+        clearSauce();
+
+        if (clearBaseOrder) {
+          const toRemove = [];
+          order.forEach((v, k) => {
+            if (!k.startsWith("dish-")) toRemove.push(k);
+          });
+          toRemove.forEach(k => order.delete(k));
+          syncReceiptLines();
+          setTimeout(dropBread, 200);
+        }
+      }
+
+      $("#againBtn").addEventListener("click", () => resetStudio(true));
+      $("#againBtn2").addEventListener("click", () => {
+        closeAll();
+        resetStudio(true);
+      });
+
+      /* ----------------------------------------------------------------
+         11. RENDER MENU CARDS (WITH "CUSTOMIZE IN STUDIO" BUTTONS)
+         ---------------------------------------------------------------- */
+      const dishesGrid = $("#dishesGrid");
+      let currentCat = "all";
+      let currentDiet = "all";
+      let currentSearch = "";
+
+      function renderMenuGrid() {
+        dishesGrid.innerHTML = "";
+        const filtered = FULL_MENU.filter(item => {
+          if (currentCat !== "all" && item.cat !== currentCat) return false;
+          if (currentDiet === "veg" && item.diet !== "veg") return false;
+          if (currentDiet === "non-veg" && item.diet !== "non-veg") return false;
+          if (currentDiet === "chef" && item.tag !== "Chef's Pick" && item.tag !== "Best Seller") return false;
+          if (currentSearch) {
+            const q = currentSearch.toLowerCase();
+            const match = item.name.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q);
+            if (!match) return false;
+          }
+          return true;
+        });
+
+        filtered.forEach(m => {
+          const card = document.createElement("div");
+          card.className = "dish-card";
+          const qty = order.get(m.id) ? order.get(m.id).qty : 0;
+
+          let badgeClass = "dish-badge";
+          if (m.tag.includes("Spicy")) badgeClass += " spicy";
+          if (m.tag.includes("Chef")) badgeClass += " chef";
+
+          card.innerHTML = `
+      <div>
+        <div class="dish-top-bar">
+          <span class="diet-indicator ${m.diet}"><i></i></span>
+          <span class="${badgeClass}">${m.tag}</span>
+        </div>
+        <div class="dish-art">
+          <img src="${m.img}" alt="${m.name}" loading="lazy">
+        </div>
+        <div class="dish-details">
+          <h3>${m.name}</h3>
+          <p>${m.desc}</p>
+        </div>
+      </div>
+      <div class="dish-bottom">
+        <div class="dish-price"><span>₹</span>${m.price}</div>
+        <div class="dish-ctrls">
+          ${m.customizable ? `<button class="btn-glass" style="height:34px;padding:0 12px;font-size:12px" onclick="window.loadStudioBuilder('${m.customizable}')">Custom 🛠️</button>` : ""}
+          <div id="btn-wrap-${m.id}">
+            ${qty > 0 ? `
+              <div class="qty-stepper">
+                <button onclick="window.changeMenuQty('${m.id}', -1)">−</button>
+                <span>${qty}</span>
+                <button onclick="window.changeMenuQty('${m.id}', 1)">+</button>
+              </div>
+            ` : `
+              <button class="btn-fire" style="height:34px;padding:0 14px;font-size:12px" onclick="window.addMenuDish('${m.id}')">Add +</button>
+            `}
+          </div>
+        </div>
+      </div>
+    `;
+          dishesGrid.appendChild(card);
+        });
+      }
+
+      // Category tabs
+      $$(".cat-pill-btn").forEach(b => {
+        b.addEventListener("click", () => {
+          $$(".cat-pill-btn").forEach(btn => btn.classList.remove("active"));
+          b.classList.add("active");
+          currentCat = b.dataset.cat;
+          renderMenuGrid();
+        });
+      });
+
+      // Diet tags
+      $$(".diet-tag").forEach(p => {
+        p.addEventListener("click", () => {
+          $$(".diet-tag").forEach(btn => btn.classList.remove("active"));
+          p.classList.add("active");
+          currentDiet = p.dataset.diet;
+          renderMenuGrid();
+        });
+      });
+
+      // Search
+      $("#menuSearch").addEventListener("input", e => {
+        currentSearch = e.target.value.trim();
+        renderMenuGrid();
+      });
+
+      /* ----------------------------------------------------------------
+         12. CHECKOUT & WHATSAPP MODAL
+         ---------------------------------------------------------------- */
+      const co = $("#checkout"), cf = $("#confirm");
+      let mins = 0;
+      const OPEN = 11 * 60, LAST = 22 * 60 + 45;
+
+      function initTime() {
+        const d = new Date();
+        let m = d.getHours() * 60 + d.getMinutes() + 20;
+        m = Math.ceil(m / 15) * 15;
+        mins = (m < OPEN + 15 || m > LAST) ? 12 * 60 + 30 : m;
+        showTime(false);
+      }
+
+      function showTime(flip = true) {
+        const h = String(Math.floor(mins / 60)).padStart(2, "0");
+        const m = String(mins % 60).padStart(2, "0");
+        [["#hh", h], ["#mm", m]].forEach(([s, v]) => {
+          const e = $(s);
+          if (e.textContent !== v) {
+            e.textContent = v;
+            if (flip) {
+              e.classList.remove("f");
+              void e.offsetWidth;
+              e.classList.add("f");
+            }
+          }
+        });
+      }
+      $("#tMinus").addEventListener("click", () => { mins = Math.max(OPEN, mins - 15); showTime(); });
+      $("#tPlus").addEventListener("click", () => { mins = Math.min(LAST, mins + 15); showTime(); });
+
+      function openCheckout() {
+        if (order.size === 0) {
+          showToast("Your cart is empty! Customize a dish or add from menu.");
+          return;
+        }
+        const s = $("#sum");
+        s.innerHTML = "";
+        order.forEach(v => {
+          const qtyText = v.qty > 1 ? ` (x${v.qty})` : "";
+          s.insertAdjacentHTML("beforeend", `<li><span>${v.name}${qtyText}</span><b>${inr(v.price * (v.qty || 1))}</b></li>`);
+        });
+        s.insertAdjacentHTML("beforeend", `<li class="tot"><span>Total</span><b>${inr(sum())}</b></li>`);
+        $("#placeBtn").textContent = `Place Pickup Order · ${inr(sum())}`;
+        if (!mins) initTime();
+        co.classList.add("show");
+        setTimeout(() => $("#who").focus(), 60);
+      }
+
+      function closeAll() {
+        co.classList.remove("show");
+        cf.classList.remove("show");
+      }
+      $$("[data-close]").forEach(b => b.addEventListener("click", closeAll));
+      [co, cf].forEach(m => m.addEventListener("click", e => { if (e.target === m) closeAll(); }));
+
+      let lastOrderDetails = null;
+
+      $("#placeBtn").addEventListener("click", () => {
+        const name = $("#who").value.trim().replace(/[<>&"]/g, "");
+        const noteText = $("#note").value.trim().replace(/[<>&"]/g, "");
+        co.classList.remove("show");
+        serving = true;
+        const no = String(orderNo).padStart(3, "0");
+        const t = `${$("#hh").textContent}:${$("#mm").textContent}`;
+        $("#sealNo").textContent = "Nº " + no;
+        $("#forWho").textContent = name ? "for " + name : "for you";
+
+        setTimeout(() => {
+          rolledEl.classList.add("sealed");
+          hopRolled();
+        }, reduce ? 0 : 300);
+
+        lastOrderDetails = {
+          orderNo: no,
+          name: name || "Customer",
+          time: t,
+          items: Array.from(order.values()),
+          total: inr(sum()),
+          note: noteText
+        };
+
+        let ticketHtml = "";
+        order.forEach(v => {
+          ticketHtml += `<div>• ${v.name} ${v.qty > 1 ? "(x" + v.qty + ")" : ""} — <b style="color:var(--accent)">${inr(v.price * (v.qty || 1))}</b></div>`;
+        });
+        ticketHtml += `<div style="margin-top:6px;border-top:1px dashed var(--border);padding-top:6px;color:#fff;font-weight:700">Total: ${inr(sum())}</div>`;
+        if (noteText) ticketHtml += `<div style="margin-top:4px;color:var(--primary)">Note: "${noteText}"</div>`;
+        $("#cfSummary").innerHTML = ticketHtml;
+
+        setTimeout(() => {
+          serving = false;
+          $("#cfTitle").innerHTML = `Order Nº ${no} is <em>Locked In!</em>`;
+          $("#cfText").textContent = `Custom order ticket sent to kitchen! Ready for pickup at ${t}. See you soon${name ? ", " + name : ""}!`;
+          cf.classList.add("show");
+        }, reduce ? 40 : 1700);
+      });
+
+      // WhatsApp Share Handler
+      $("#waShareBtn").addEventListener("click", () => {
+        if (!lastOrderDetails) return;
+        let msg = `🔥 *NEW ORDER - ROLL CRAFT*\n`;
+        msg += `*Order Nº:* ${lastOrderDetails.orderNo}\n`;
+        msg += `*Customer:* ${lastOrderDetails.name}\n`;
+        msg += `*Pickup Time:* ${lastOrderDetails.time}\n\n`;
+        msg += `*Items:*\n`;
+        lastOrderDetails.items.forEach(it => {
+          msg += `• ${it.name} ${it.qty > 1 ? "(x" + it.qty + ")" : ""} - ₹${it.price * (it.qty || 1)}\n`;
+        });
+        msg += `\n*Total Amount:* ${lastOrderDetails.total}\n`;
+        if (lastOrderDetails.note) msg += `*Note:* ${lastOrderDetails.note}\n`;
+
+        const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+        window.open(url, "_blank");
+      });
+
+      $("#navCartBtn").addEventListener("click", openCheckout);
+
+      /* ----------------------------------------------------------------
+         13. INITIAL STARTUP
+         ---------------------------------------------------------------- */
+      addEventListener("resize", () => {
+        clearTimeout(window._rz);
+        window._rz = setTimeout(sizeCanvas, 120);
+      });
+
+      requestAnimationFrame(() => {
+        renderMenuGrid();
+        setStudioMode("shawarma");
+        sizeCanvas();
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shWng" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shWng)">
+    <ellipse cx="100" cy="175" rx="70" ry="15" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Oval Ceramic Platter -->
+    <ellipse cx="100" cy="145" rx="75" ry="26" fill="#fffaf0"/>
+    <ellipse cx="100" cy="142" rx="72" ry="23" fill="#feebc8"/>
+    <!-- Sticky Caramelized Wing 1 -->
+    <g transform="translate(60, 85) rotate(-20)">
+      <path d="M0,25 C-10,0 20,-10 35,5 C50,20 40,40 20,40 C5,40 5,35 0,25 Z" fill="#742a2a"/>
+      <path d="M2,24 C-6,3 18,-6 32,7 C44,19 36,36 18,36 C6,36 6,32 2,24 Z" fill="#9b2c2c"/>
+      <circle cx="15" cy="12" r="1.5" fill="#fffaf0"/><circle cx="24" cy="18" r="1.5" fill="#fffaf0"/>
+    </g>
+    <!-- Sticky Caramelized Wing 2 -->
+    <g transform="translate(100, 85) rotate(25)">
+      <path d="M0,25 C-10,0 20,-10 35,5 C50,20 40,40 20,40 C5,40 5,35 0,25 Z" fill="#742a2a"/>
+      <path d="M2,24 C-6,3 18,-6 32,7 C44,19 36,36 18,36 C6,36 6,32 2,24 Z" fill="#9b2c2c"/>
+      <circle cx="16" cy="14" r="1.5" fill="#fffaf0"/><circle cx="22" cy="22" r="1.5" fill="#fffaf0"/>
+    </g>
+    <!-- Center Drumette Wing 3 -->
+    <g transform="translate(80, 105)">
+      <path d="M0,20 C-15,5 15,-15 35,0 C45,15 35,35 15,35 C0,35 5,28 0,20 Z" fill="#742a2a"/>
+      <path d="M2,18 C-10,7 14,-10 30,2 C38,14 30,30 14,30 C3,30 6,24 2,18 Z" fill="#b7791f"/>
+      <!-- Glossy Glaze Highlight -->
+      <path d="M12,5 Q24,0 28,10" stroke="#fffaf0" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/>
+      <!-- Toasted Sesame Seeds -->
+      <circle cx="12" cy="14" r="1.5" fill="#fffaf0"/>
+      <circle cx="20" cy="10" r="1.5" fill="#fffaf0"/>
+      <circle cx="25" cy="18" r="1.5" fill="#fffaf0"/>
+      <circle cx="16" cy="24" r="1.5" fill="#fffaf0"/>
+    </g>
+    <!-- Ranch Dip Bowl -->
+    <ellipse cx="145" cy="135" rx="18" ry="12" fill="#cbd5e0"/>
+    <ellipse cx="145" cy="133" rx="15" ry="9" fill="#fffaf0"/>
+    <circle cx="145" cy="133" r="2" fill="#38a169"/>
+    <!-- Celery Sticks -->
+    <rect x="35" y="118" width="8" height="35" rx="3" transform="rotate(-35 35 118)" fill="#68d391"/>
+    <rect x="44" y="125" width="7" height="32" rx="3" transform="rotate(-45 44 125)" fill="#9ae6b4"/>
+  </g>
+</svg>

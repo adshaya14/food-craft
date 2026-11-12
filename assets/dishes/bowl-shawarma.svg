@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shadowShB" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1d2a1f" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowShB)">
+    <ellipse cx="100" cy="172" rx="72" ry="14" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Modern Matte Ceramic Bowl -->
+    <path d="M30,105 C30,165 170,165 170,105 Z" fill="#1a202c"/>
+    <ellipse cx="100" cy="105" rx="70" ry="18" fill="#2d3748"/>
+    <ellipse cx="100" cy="104" rx="66" ry="15" fill="#4a5568"/>
+    <!-- Spiced Turmeric Yellow Rice Base -->
+    <ellipse cx="100" cy="100" rx="64" ry="20" fill="#f6e05e"/>
+    <!-- Shaved Chicken Shawarma Heap (Left) -->
+    <path d="M42,95 C45,80 75,70 95,85 C95,105 55,115 42,95 Z" fill="#b7791f"/>
+    <path d="M48,92 C52,82 72,75 90,88 C85,102 55,108 48,92 Z" fill="#d69e2e"/>
+    <!-- Crisp Purple Pickled Cabbage (Right) -->
+    <path d="M105,85 C125,70 155,80 158,95 C145,115 105,105 105,85 Z" fill="#702459"/>
+    <!-- Diced Cucumber & Tomatoes (Top) -->
+    <rect x="88" y="72" width="10" height="10" rx="2" fill="#e53e3e"/>
+    <rect x="102" y="70" width="10" height="10" rx="2" fill="#38a169"/>
+    <rect x="94" y="62" width="10" height="10" rx="2" fill="#e53e3e"/>
+    <!-- White Garlic Toum / Tahini Drizzle zigzag -->
+    <path d="M45,95 Q70,75 95,95 Q120,75 155,95" stroke="#fffff0" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <!-- Red Spicy Harissa Drizzle -->
+    <path d="M50,90 Q75,105 100,90 Q125,105 150,90" stroke="#e53e3e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- Toasted Pita Chips on side -->
+    <polygon points="140,75 160,60 162,80" fill="#dd6b20"/>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shW1" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shW1)">
+    <ellipse cx="100" cy="175" rx="60" ry="12" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Diagonal Halved Wrap 1 -->
+    <g transform="translate(15, 10) rotate(-22 90 100)">
+      <path d="M60,60 L75,150 Q95,158 115,150 L130,60 Z" fill="#dd6b20"/>
+      <path d="M62,62 L76,148 Q95,155 114,148 L128,62 Z" fill="#feebc8"/>
+      <!-- Grilled wrap marks -->
+      <line x1="72" y1="95" x2="120" y2="95" stroke="#c05621" stroke-width="2.5"/>
+      <line x1="75" y1="115" x2="116" y2="115" stroke="#c05621" stroke-width="2.5"/>
+      <line x1="78" y1="135" x2="112" y2="135" stroke="#c05621" stroke-width="2.5"/>
+      <!-- Cross section oval -->
+      <ellipse cx="95" cy="60" rx="35" ry="16" fill="#fffaf0" stroke="#dd6b20" stroke-width="3"/>
+      <!-- Green Herby Falafel halves -->
+      <circle cx="82" cy="58" r="10" fill="#276749"/>
+      <circle cx="82" cy="58" r="8" fill="#48bb78"/>
+      <circle cx="108" cy="58" r="10" fill="#276749"/>
+      <circle cx="108" cy="58" r="8" fill="#48bb78"/>
+      <!-- Tahini Sauce overflow -->
+      <path d="M75,56 Q95,68 115,56" stroke="#faf089" stroke-width="4" stroke-linecap="round"/>
+      <!-- Pickled Turnip Pink Sticks -->
+      <rect x="90" y="52" width="5" height="15" rx="2" fill="#b83280"/>
+      <rect x="98" y="54" width="4" height="14" rx="2" fill="#b83280"/>
+    </g>
+  </g>
+</svg>

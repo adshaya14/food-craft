@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shadowTaw" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowTaw)">
+    <!-- Pita bread base -->
+    <ellipse cx="100" cy="160" rx="75" ry="22" fill="#feebc8"/>
+    <!-- Skewer 1 (Metal skewer running diagonally) -->
+    <line x1="30" y1="140" x2="165" y2="40" stroke="#a0aec0" stroke-width="4" stroke-linecap="round"/>
+    <!-- Skewer Ring Handle -->
+    <circle cx="28" cy="142" r="7" stroke="#a0aec0" stroke-width="3" fill="none"/>
+    <!-- Cubes of Golden Garlic Grilled Chicken & Veggies -->
+    <!-- Cube 1 -->
+    <rect x="45" y="112" width="22" height="20" rx="5" transform="rotate(-36 45 112)" fill="#d69e2e"/>
+    <path d="M50,118 L62,110" stroke="#744210" stroke-width="2.5"/>
+    <!-- Grilled Red Bell Pepper -->
+    <rect x="65" y="98" width="14" height="20" rx="4" transform="rotate(-36 65 98)" fill="#e53e3e"/>
+    <!-- Cube 2 -->
+    <rect x="80" y="85" width="24" height="20" rx="5" transform="rotate(-36 80 85)" fill="#ecc94b"/>
+    <path d="M85,92 L98,84" stroke="#744210" stroke-width="2.5"/>
+    <!-- Grilled Onion -->
+    <rect x="104" y="70" width="14" height="20" rx="4" transform="rotate(-36 104 70)" fill="#edf2f7"/>
+    <!-- Cube 3 -->
+    <rect x="118" y="58" width="22" height="20" rx="5" transform="rotate(-36 118 58)" fill="#d69e2e"/>
+    <path d="M122,64 L134,56" stroke="#744210" stroke-width="2.5"/>
+    <!-- Skewer Tip -->
+    <polygon points="165,40 172,35 168,44" fill="#a0aec0"/>
+    <!-- Garlic Toum Dip Bowl -->
+    <ellipse cx="145" cy="150" rx="24" ry="14" fill="#edf2f7"/>
+    <ellipse cx="145" cy="148" rx="20" ry="10" fill="#fffff0"/>
+    <circle cx="145" cy="148" r="3" fill="#d69e2e"/>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="bSh" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <radialGradient id="bunBottomGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbd38d"/>
+      <stop offset="70%" stop-color="#ed8936"/>
+      <stop offset="100%" stop-color="#c05621"/>
+    </radialGradient>
+  </defs>
+  <g filter="url(#bSh)">
+    <!-- Toasted round bottom brioche bun -->
+    <ellipse cx="100" cy="100" rx="82" ry="78" fill="#dd6b20"/>
+    <ellipse cx="100" cy="98" rx="78" ry="74" fill="url(#bunBottomGrad)"/>
+    <!-- Golden griddle toast rings -->
+    <ellipse cx="100" cy="98" rx="60" ry="56" fill="none" stroke="#9c4221" stroke-width="4" stroke-dasharray="12,14" opacity="0.6"/>
+    <ellipse cx="100" cy="98" rx="35" ry="32" fill="none" stroke="#7b341e" stroke-width="3" stroke-dasharray="8,10" opacity="0.5"/>
+    <circle cx="100" cy="98" r="8" fill="#c05621" opacity="0.4"/>
+  </g>
+</svg>

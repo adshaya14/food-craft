@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="pPanSh" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <g filter="url(#pPanSh)">
+    <!-- Charred Woodfired Crust -->
+    <circle cx="100" cy="100" r="84" fill="#c05621"/>
+    <circle cx="100" cy="100" r="82" fill="#dd6b20"/>
+    <ellipse cx="40" cy="75" rx="5" ry="3" fill="#2d1508" opacity="0.7"/>
+    <ellipse cx="155" cy="68" rx="6" ry="3" fill="#2d1508" opacity="0.7"/>
+    <!-- Peri-Peri Spicy Marinara Base -->
+    <circle cx="100" cy="100" r="70" fill="#b91c1c"/>
+    <circle cx="100" cy="100" r="66" fill="#fde047"/>
+    <!-- Cubes of Golden Spiced Peri-Peri Paneer -->
+    <rect x="70" y="65" width="16" height="15" rx="3" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+    <rect x="114" y="68" width="16" height="15" rx="3" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+    <rect x="92" y="92" width="18" height="16" rx="3" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+    <rect x="68" y="116" width="16" height="15" rx="3" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+    <rect x="118" y="112" width="16" height="15" rx="3" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+    <!-- Bell Pepper Green Triangles -->
+    <polygon points="60,90 68,80 72,92" fill="#16a34a"/>
+    <polygon points="128,88 138,80 140,94" fill="#16a34a"/>
+    <polygon points="95,124 105,116 108,130" fill="#16a34a"/>
+    <!-- Sliced Pickled Jalapeños -->
+    <circle cx="90" cy="72" r="5" fill="#15803d"/><circle cx="90" cy="72" r="2.5" fill="#4ade80"/>
+    <circle cx="110" cy="130" r="5" fill="#15803d"/><circle cx="110" cy="130" r="2.5" fill="#4ade80"/>
+    <circle cx="130" cy="105" r="5" fill="#15803d"/><circle cx="130" cy="105" r="2.5" fill="#4ade80"/>
+    <!-- Sweet Golden Corn Kernels -->
+    <circle cx="80" cy="100" r="3" fill="#eab308"/>
+    <circle cx="104" cy="80" r="3" fill="#eab308"/>
+    <circle cx="85" cy="120" r="3" fill="#eab308"/>
+    <!-- Fiery Peri-Peri Dust -->
+    <circle cx="78" cy="72" r="1.5" fill="#dc2626"/>
+    <circle cx="122" cy="75" r="1.5" fill="#dc2626"/>
+    <circle cx="100" cy="100" r="1.5" fill="#dc2626"/>
+  </g>
+</svg>

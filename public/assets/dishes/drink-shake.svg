@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shadowShk" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#1d2a1f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowShk)">
+    <ellipse cx="100" cy="182" rx="45" ry="10" fill="#e2d7bc" opacity="0.6"/>
+    <!-- Glass Foot & Stem -->
+    <ellipse cx="100" cy="175" rx="32" ry="7" fill="#e2e8f0"/>
+    <rect x="94" y="155" width="12" height="20" fill="#cbd5e0"/>
+    <!-- Glass Body (Fluted soda fountain glass) -->
+    <path d="M72,80 L80,155 Q100,162 120,155 L128,80 Z" fill="#e2e8f0" opacity="0.5"/>
+    <!-- Rich Chocolate Milkshake -->
+    <path d="M74,85 L81,153 Q100,159 119,153 L126,85 Z" fill="#4a2511"/>
+    <path d="M74,85 L81,153 Q100,159 119,153 L126,85 Z" fill="#5c2e17" opacity="0.8"/>
+    <!-- Frothy Swirl Top -->
+    <ellipse cx="100" cy="85" rx="26" ry="9" fill="#743a1d"/>
+    <!-- Mountain of Whipped Cream -->
+    <path d="M75,82 C70,70 85,60 90,65 C88,52 105,45 110,55 C115,48 130,55 125,70 C132,75 125,85 100,85 C80,85 75,82 75,82 Z" fill="#fffaf0"/>
+    <!-- Chocolate Sauce Drizzle over Cream -->
+    <path d="M82,72 Q95,60 100,75 Q110,65 118,78" stroke="#3b1d0c" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <!-- Maraschino Cherry on top -->
+    <circle cx="102" cy="46" r="8" fill="#c53030"/>
+    <path d="M102,40 Q112,28 118,30" stroke="#742a2a" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <!-- Retro Striped Paper Straw -->
+    <g transform="rotate(-15 115 40)">
+      <rect x="110" y="8" width="8" height="120" rx="3" fill="#fffaf0"/>
+      <!-- Red Stripes -->
+      <path d="M110,16 L118,22 M110,32 L118,38 M110,48 L118,54 M110,64 L118,70 M110,80 L118,86" stroke="#e53e3e" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
